@@ -1,98 +1,99 @@
 /**
- * AI Scam Shield — Core Frontend Application Logic
+ * AI SCAM SHIELD — Tactical Cybersecurity HUD Application Logic
+ * Reference: Military Cyber Ops / Ethical Hacker Terminal Aesthetic
  * Pure Vanilla JS, zero dependencies, lightning fast.
  */
 
 // ─── Translations ─────────────────────────────────────────────────────────────
 const I18N = {
   en: {
-    brand_sub: "Emergency Cyber Response",
-    tab_emergency: "🚨 Emergency Help",
-    tab_check: "🔍 Scam Check",
-    tab_guardian: "👨‍👩‍👦 Family & Alerts",
-    tab_timeline: "📋 Evidence & Export",
-    hero_btn: "🚨 I ALREADY PAID / SENT MONEY",
-    hero_sub: "5-minute emergency freeze for bank accounts, UPI & SIM",
-    screen1_title: "Step 1: What happened?",
-    screen1_sub: "Select all that apply. Act immediately.",
-    screen2_title: "Step 2: How long ago did this happen?",
-    screen2_sub: "Within 30 minutes is the golden window to freeze funds.",
-    screen3_title: "Step 3: Transfer details",
-    screen3_sub: "Helps us pinpoint your bank's exact freeze helpline.",
-    btn_next: "Next →",
+    brand_sub: "Deterministic Threat Neutralization • 5-Minute Account Freeze Protocol",
+    tab_emergency: "🚨 EMERGENCY TRIAGE",
+    tab_check: "🔍 SCAM INSPECTOR",
+    tab_guardian: "👨‍👩‍👦 FAMILY DEFENSE GRID",
+    tab_timeline: "📋 AUDIT & EXPORT",
+    hero_btn: "I ALREADY SENT MONEY OR SHARED AN OTP",
+    hero_sub: "Critical alert: Fraudulent funds disperse through mule networks within 15–45 minutes. Initiate emergency freeze protocols across bank accounts, UPI routing, and SIM access immediately.",
+    screen1_title: "Phase 01: What Happened?",
+    screen1_sub: "Select all compromised vectors. Act immediately.",
+    screen2_title: "Phase 02: Elapsed Incident Timeline",
+    screen2_sub: "Within 30 minutes is the golden window to freeze funds before mule withdrawal.",
+    screen3_title: "Phase 03: Account & Channel Vector",
+    screen3_sub: "Pinpoints your bank's dedicated fraud team and exact phone dialer.",
+    btn_next: "Next Phase →",
     btn_back: "← Back",
-    btn_generate_plan: "⚡ Generate Emergency Plan NOW",
-    btn_check_scam: "🔍 Analyze Message",
-    scam_input_placeholder: "Paste suspicious SMS, WhatsApp message, or email here...",
-    demo_presets_title: "Demo presets:",
-    preset_elec: "⚡ Electricity Bill Scam",
-    preset_kyc: "🏦 Bank KYC Scam",
-    preset_lottery: "🎁 Prize / Lottery Scam",
-    alert_badge_text: "new",
-    guardian_header: "Family Protection & Real-time Alerts",
-    join_family_btn: "Link Family",
-    download_pdf_btn: "📄 Download PDF Evidence Bundle",
-    plan_generated_title: "🛡️ Immediate Emergency Plan",
+    btn_generate_plan: "⚡ GENERATE ACTION DIRECTIVE NOW",
+    btn_check_scam: "🔍 SCAN & NEUTRALIZE THREAT",
+    scam_input_placeholder: "Paste suspicious SMS, WhatsApp message, or URL here...",
+    demo_presets_title: "LOAD THREAT SAMPLES:",
+    preset_elec: "⚡ Fake Electricity Cut-off SMS",
+    preset_kyc: "🏦 Urgent Bank KYC Suspension",
+    preset_lottery: "🎁 Jio KBC Lottery Winner",
+    alert_badge_text: "ALERT",
+    guardian_header: "FAMILY DEFENSE GRID // TELEMETRY",
+    join_family_btn: "LINK TELEMETRY",
+    download_pdf_btn: "📄 EXFILTRATE PDF BUNDLE",
+    plan_generated_title: "THREAT MITIGATION DIRECTIVE",
     official_helpline: "Official Helpline",
   },
   bn: {
-    brand_sub: "জরুরি সাইবার প্রতিক্রিয়া",
-    tab_emergency: "🚨 জরুরি সাহায্য",
-    tab_check: "🔍 স্ক্যাম যাচাই",
-    tab_guardian: "👨‍👩‍👦 পরিবার ও সতর্কতা",
-    tab_timeline: "📋 প্রমাণ ও এক্সপোর্ট",
-    hero_btn: "🚨 আমি ইতিমধ্যে টাকা পাঠিয়েছি / প্রতারিত হয়েছি",
-    hero_sub: "ব্যাংক অ্যাকাউন্ট, ইউপিআই ও সিম ৫ মিনিটে ফ্রিজ করার নির্দেশিকা",
-    screen1_title: "ধাপ ১: ঠিক কী ঘটেছে?",
+    brand_sub: "সাইবার প্রতিরোধ কনসোল • ৫-মিনিটে অ্যাকাউন্ট ফ্রিজ প্রোটোকল",
+    tab_emergency: "🚨 জরুরি ট্রায়াজ",
+    tab_check: "🔍 স্ক্যাম যাচাইকারী",
+    tab_guardian: "👨‍👩‍👦 পারিবারিক ডিফেন্স গ্রিড",
+    tab_timeline: "📋 অডিট ও প্রমাণ এক্সপোর্ট",
+    hero_btn: "আমি ইতিমধ্যে টাকা পাঠিয়েছি বা ওটিপি দিয়ে ফেলেছি",
+    hero_sub: "জরুরি সতর্কতা: প্রতারকরা ১৫-৪৫ মিনিটের মধ্যে টাকা তুলে নেয়। এখনই ব্যাংক, ইউপিআই ও সিম ফ্রিজ করার জরুরি প্রোটোকল চালু করুন।",
+    screen1_title: "ধাপ ০১: ঠিক কী ঘটেছে?",
     screen1_sub: "যা যা ঘটেছে বেছে নিন। অবিলম্বে পদক্ষেপ নেওয়া দরকার।",
-    screen2_title: "ধাপ ২: কতক্ষণ আগে ঘটেছে?",
-    screen2_sub: "৩০ মিনিটের মধ্যে টাকা ফেরত পাওয়ার সর্বোচ্চ সুযোগ থাকে।",
-    screen3_title: "ধাপ ৩: লেনদেনের তথ্য",
+    screen2_title: "ধাপ ০২: কতক্ষণ আগে ঘটেছে?",
+    screen2_sub: "৩০ মিনিটের মধ্যে টাকা ফেরত পাওয়ার সর্বোচ্চ সুযোগ থাকে (গোল্ডেন উইন্ডো)।",
+    screen3_title: "ধাপ ০৩: লেনদেনের তথ্য",
     screen3_sub: "সঠিক ব্যাংক বা ইউপিআই হেল্পলাইন খুঁজে পাওয়ার জন্য।",
-    btn_next: "পরবর্তী →",
+    btn_next: "পরবর্তী ধাপ →",
     btn_back: "← পেছনে",
-    btn_generate_plan: "⚡ এখনই জরুরি পরিকল্পনা তৈরি করুন",
-    btn_check_scam: "🔍 বার্তাটি যাচাই করুন",
+    btn_generate_plan: "⚡ এখনই জরুরি কর্মপরিকল্পনা তৈরি করুন",
+    btn_check_scam: "🔍 বার্তাটি স্ক্যান ও যাচাই করুন",
     scam_input_placeholder: "সন্দেহজনক এসএমএস বা বার্তা এখানে পেস্ট করুন...",
-    demo_presets_title: "ডেমো উদাহরণ:",
-    preset_elec: "⚡ বিদ্যুৎ বিল প্রতারণা",
-    preset_kyc: "🏦 ব্যাংক কেওয়াইসি প্রতারণা",
-    preset_lottery: "🎁 লটারি বা পুরস্কার প্রতারণা",
-    alert_badge_text: "নতুন",
-    guardian_header: "পারিবারিক সুরক্ষা ও সতর্কতা কেন্দ্র",
-    join_family_btn: "পরিবার যুক্ত করুন",
-    download_pdf_btn: "📄 পিডিএফ প্রমাণ বান্ডিল ডাউনলোড করুন",
-    plan_generated_title: "🛡️ তাৎক্ষণিক জরুরি নির্দেশিকা",
+    demo_presets_title: "ডেমো উদাহরণ লোড করুন:",
+    preset_elec: "⚡ বিদ্যুৎ সংযোগ কাটার ভুয়া এসএমএস",
+    preset_kyc: "🏦 ব্যাংক কেওয়াইসি বন্ধের এসএমএস",
+    preset_lottery: "🎁 জিও লটারি পুরস্কারের এসএমএস",
+    alert_badge_text: "সতর্কতা",
+    guardian_header: "পারিবারিক ডিফেন্স গ্রিড // টেলিমეტ্রি",
+    join_family_btn: "গ্রিড লিংক করুন",
+    download_pdf_btn: "📄 পিডিএফ প্রমাণ এক্সপোর্ট",
+    plan_generated_title: "তাৎক্ষণিক জরুরি নির্দেশিকা",
     official_helpline: "অফিসিয়াল হেল্পলাইন",
   },
   hi: {
-    brand_sub: "आपातकालीन साइबर प्रतिक्रिया",
-    tab_emergency: "🚨 आपातकालीन मदद",
-    tab_check: "🔍 स्कैम जांचें",
-    tab_guardian: "👨‍👩‍👦 परिवार और अलर्ट",
-    tab_timeline: "📋 सबूत और एक्सपोर्ट",
-    hero_btn: "🚨 मैंने पैसे भेज दिए हैं / धोखाधड़ी हुई है",
-    hero_sub: "बैंक खाते, यूपीआई और सिम को 5 मिनट में सुरक्षित करने के कदम",
-    screen1_title: "चरण 1: वास्तव में क्या हुआ?",
+    brand_sub: "साइबर रक्षा कंसोल • 5-मिनट में खाता फ्रीज प्रोटोकॉल",
+    tab_emergency: "🚨 आपातकालीन ट्राइएज",
+    tab_check: "🔍 स्कैम जांचकर्ता",
+    tab_guardian: "👨‍👩‍👦 परिवार सुरक्षा ग्रिड",
+    tab_timeline: "📋 ऑडिट और साक्ष्य एक्सपोर्ट",
+    hero_btn: "मैंने पैसे भेज दिए हैं या ओटीपी साझा कर दिया है",
+    hero_sub: "आपातकालीन चेतावनी: ठग 15-45 मिनट में पैसे निकाल लेते हैं। अपने बैंक खाते, यूपीआई और सिम को तुरंत सुरक्षित करने के कदम उठाएं।",
+    screen1_title: "चरण 01: वास्तव में क्या हुआ?",
     screen1_sub: "सभी लागू विकल्प चुनें। तुरंत कार्रवाई करें।",
-    screen2_title: "चरण 2: यह कितनी देर पहले हुआ?",
+    screen2_title: "चरण 02: यह कितनी देर पहले हुआ?",
     screen2_sub: "30 मिनट के भीतर पैसे रुकवाने का सबसे सुनहरा मौका होता है।",
-    screen3_title: "चरण 3: ट्रांसफर का विवरण",
+    screen3_title: "चरण 03: ट्रांसफर का विवरण",
     screen3_sub: "बैंक या यूपीआई हेल्पलाइन तुरंत कनेक्ट करने के लिए।",
     btn_next: "आगे बढ़ें →",
     btn_back: "← पीछे",
-    btn_generate_plan: "⚡ तुरंत आपातकालीन योजना बनाएं",
-    btn_check_scam: "🔍 संदेश की जांच करें",
+    btn_generate_plan: "⚡ तुरंत आपातकालीन कार्य योजना बनाएं",
+    btn_check_scam: "🔍 संदेश स्कैन एवं निष्प्रभावी करें",
     scam_input_placeholder: "संदिग्ध एसएमएस या संदेश यहां पेस्ट करें...",
-    demo_presets_title: "डेमो उदाहरण:",
-    preset_elec: "⚡ बिजली बिल धोखाधड़ी",
-    preset_kyc: "🏦 बैंक केवाईसी स्कैम",
-    preset_lottery: "🎁 लॉटरी या इनाम स्कैम",
-    alert_badge_text: "नया",
-    guardian_header: "परिवार सुरक्षा और अलर्ट केंद्र",
-    join_family_btn: "परिवार से जुड़ें",
-    download_pdf_btn: "📄 पीडीएफ साक्ष्य बंडल डाउनलोड करें",
-    plan_generated_title: "🛡️ तत्काल आपातकालीन कार्य योजना",
+    demo_presets_title: "डेमो थ्रेट सैंपल लोड करें:",
+    preset_elec: "⚡ बिजली बिल काटने का फर्जी संदेश",
+    preset_kyc: "🏦 बैंक केवाईसी निलंबन संदेश",
+    preset_lottery: "🎁 जियो लॉटरी इनाम संदेश",
+    alert_badge_text: "अलर्ट",
+    guardian_header: "परिवार सुरक्षा ग्रिड // टेलीमेट्री",
+    join_family_btn: "ग्रिड से जुड़ें",
+    download_pdf_btn: "📄 आधिकारिक पीडीएफ एक्सपोर्ट",
+    plan_generated_title: "तत्काल आपातकालीन कार्य योजना",
     official_helpline: "आधिकारिक हेल्पलाइन",
   }
 };
@@ -152,7 +153,7 @@ function playAlertTone() {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = 'triangle';
+    osc.type = 'sawtooth';
     osc.frequency.setValueAtTime(880, ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.3);
     gain.gain.setValueAtTime(0.3, ctx.currentTime);
@@ -172,7 +173,7 @@ function showToast(message, isAlert = false) {
   if (!container) return;
   const toast = document.createElement('div');
   toast.className = `toast ${isAlert ? 'alert' : ''}`;
-  toast.innerHTML = `<span>${isAlert ? '🚨' : 'ℹ️'}</span> <span>${message}</span>`;
+  toast.innerHTML = `<span>${isAlert ? '🚨' : '⚡'}</span> <span>${message}</span>`;
   container.appendChild(toast);
   setTimeout(() => {
     toast.style.opacity = '0';
@@ -221,7 +222,7 @@ async function initApp() {
         });
       }
     } catch (e) {
-      // Family may already be paired
+      // Family already paired
     }
 
     // Start background alert polling
@@ -231,10 +232,9 @@ async function initApp() {
     updateLanguage(state.currentLang);
     renderPersonaPill();
     renderTabs();
-    renderEmergencyIntake();
   } catch (err) {
     console.error('Init failed:', err);
-    showToast('Backend connection active. Ready for demo.', false);
+    showToast('Cyber Defense Engine connected. Ready for triage.', false);
   }
 }
 
@@ -255,7 +255,7 @@ function renderPersonaPill() {
   const el = document.getElementById('persona-indicator');
   if (!el) return;
   const isG = state.currentPersona === 'guardian';
-  el.className = `role-pill ${isG ? 'guardian' : 'protected'}`;
+  el.className = `persona-badge ${isG ? 'active-guardian' : 'active-protected'}`;
   el.innerHTML = isG ? '🛡️ Profile: Rina (Guardian)' : '📱 Profile: মা / Maa (Protected)';
 }
 
@@ -263,7 +263,7 @@ function renderPersonaPill() {
 window.setLanguage = function(lang) {
   state.currentLang = lang;
   updateLanguage(lang);
-  showToast(`Language changed to ${lang === 'bn' ? 'বাংলা (Bengali)' : lang === 'hi' ? 'हिन्दी (Hindi)' : 'English'}`);
+  showToast(`Language set to ${lang === 'bn' ? 'বাংলা (Bengali)' : lang === 'hi' ? 'हिन्दी (Hindi)' : 'English'}`);
 };
 
 function updateLanguage(lang) {
@@ -309,7 +309,7 @@ function renderTabs() {
   });
 }
 
-// ─── Beat 1: Emergency Intake & Plan ─────────────────────────────────────────
+// ─── Beat 1: Emergency Intake & Action Plan ──────────────────────────────────
 window.startEmergencyFlow = function() {
   document.getElementById('emergency-hero').style.display = 'none';
   document.getElementById('emergency-wizard').style.display = 'block';
@@ -333,12 +333,17 @@ window.prevIntakeStep = function() {
 
 function showIntakeStep(stepNum) {
   state.intake.step = stepNum;
-  document.querySelectorAll('.wizard-step').forEach(step => step.classList.remove('active'));
+  document.querySelectorAll('.wizard-step').forEach(step => step.style.display = 'none');
   const activeStep = document.getElementById(`intake-step-${stepNum}`);
-  if (activeStep) activeStep.classList.add('active');
+  if (activeStep) activeStep.style.display = 'block';
 
-  const prog = document.getElementById('intake-progress');
-  if (prog) prog.style.width = `${(stepNum / 3) * 100}%`;
+  // Update step indicators
+  for (let i = 1; i <= 3; i++) {
+    const node = document.getElementById(`step-node-${i}`);
+    if (node) {
+      node.className = `step-node ${i === stepNum ? 'active' : i < stepNum ? 'completed' : ''}`;
+    }
+  }
 }
 
 window.toggleScamType = function(type, cardEl) {
@@ -364,7 +369,7 @@ window.submitEmergency = async function() {
   const btn = document.getElementById('btn-submit-emergency');
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = '⏳ Generating Emergency Plan...';
+    btn.innerHTML = '⏳ PINPOINTING BANK FRAUD DESK...';
   }
 
   const payload = {
@@ -389,14 +394,14 @@ window.submitEmergency = async function() {
     state.activeIncidentId = plan.incident_id;
 
     renderEmergencyPlan(plan);
-    showToast('🚨 Emergency plan activated! Bank fraud team and 1930 queued.', true);
+    showToast('🚨 Emergency plan generated! Bank fraud lines queued.', true);
   } catch (err) {
     console.error('Emergency submission error:', err);
     showToast(`Error: ${err.message}`, true);
   } finally {
     if (btn) {
       btn.disabled = false;
-      btn.innerHTML = '⚡ Generate Emergency Plan NOW';
+      btn.innerHTML = '⚡ GENERATE ACTION DIRECTIVE NOW';
     }
   }
 };
@@ -407,23 +412,28 @@ function renderEmergencyPlan(plan) {
   planContainer.style.display = 'block';
 
   let html = `
-    <div class="glass-panel danger-glow">
-      <div class="plan-header critical">
+    <div class="card" style="border: 1.5px solid var(--neon-green); box-shadow: var(--neon-green-glow);">
+      <div class="plan-banner">
         <div>
-          <h2 style="font-size: 1.3rem; font-weight: 800; color: #fff;">
-            🛡️ AI Scam Shield — Action Plan
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--neon-green); text-transform: uppercase; letter-spacing: 0.08em; background: rgba(0, 255, 102, 0.1); padding: 3px 8px; border-radius: 2px; border: 1px solid var(--neon-green);">
+            [ THREAT MITIGATION DIRECTIVE ]
+          </span>
+          <h2 style="font-family: var(--font-hud); font-size: 1.35rem; font-weight: 800; color: #FFFFFF; margin-top: 6px; text-transform: uppercase;">
+            EMERGENCY ACTION DIRECTIVE
           </h2>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">
-            Incident ID: <code style="color: #93C5FD;">${plan.incident_id.slice(0, 8)}</code>
+          <p style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--neon-cyan); margin-top: 2px;">
+            INCIDENT_REF: #SCAM-${plan.incident_id.slice(0, 8).toUpperCase()} • DETERMINISTIC RESCUE DIRECTIVES
           </p>
         </div>
-        <span class="severity-pill ${plan.severity}">${plan.severity.toUpperCase()}</span>
+        <span class="severity-pill ${plan.severity}">${plan.severity.toUpperCase()} SEVERITY</span>
       </div>
 
-      <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 20px;">
-        <p style="font-size: 0.88rem; font-weight: 700; color: #FCA5A5;">
-          ⏱️ Golden Window: Freeze the transaction in the first 30 minutes to maximize recovery chance.
-        </p>
+      <div class="golden-window-callout">
+        <div class="golden-window-icon">⏱️</div>
+        <div>
+          <div class="golden-window-title">30-MINUTE GOLDEN RECOVERY WINDOW ACTIVE</div>
+          <div class="golden-window-text">Mule transfer chain interception in progress. Complete following tactical mitigation steps in order:</div>
+        </div>
       </div>
 
       <div class="steps-list">
@@ -432,25 +442,32 @@ function renderEmergencyPlan(plan) {
   plan.plan_steps.forEach(step => {
     const isUrgent = step.is_urgent;
     html += `
-      <div class="step-card ${isUrgent ? 'urgent' : ''}" id="step-card-${step.step_number}">
-        <div class="step-top">
-          <div class="step-number-badge">${step.step_number}</div>
-          <div class="step-title">${step.title}</div>
-          ${isUrgent ? '<span style="color: #EF4444; font-size: 0.75rem; font-weight: 800; background: rgba(239,68,68,0.2); padding: 2px 8px; border-radius: 4px;">URGENT</span>' : ''}
+      <div class="step-directive-card ${isUrgent ? 'urgent' : ''}" id="step-card-${step.step_number}">
+        <div class="step-header-row">
+          <div class="step-badge-num">${step.step_number}</div>
+          <div class="step-main-title">${step.title}</div>
+          ${isUrgent ? '<span style="color: #FFFFFF; font-family: var(--font-hud); font-size: 0.72rem; font-weight: 900; background: var(--cyber-red); border: 1px solid #FF5577; padding: 4px 10px; border-radius: 2px; box-shadow: 0 0 8px var(--cyber-red);">🚨 URGENT</span>' : ''}
         </div>
-        <div class="step-why">Why: ${step.why}</div>
-        <div class="step-how">How: ${step.how}</div>
+
+        <div class="step-explanation-box">
+          <div class="step-why-line">WHY_REQUIRED // ${step.why}</div>
+          <div class="step-how-line"><b>INSTRUCTIONS:</b> ${step.how}</div>
+        </div>
         
         ${step.official_resource ? `
-          <a href="tel:${step.official_resource.replace(/[^0-9+]/g, '')}" class="call-btn">
-            📞 Call ${step.official_resource} NOW
-          </a>
+          <div>
+            <a href="tel:${step.official_resource.replace(/[^0-9+]/g, '')}" class="call-btn-action">
+              📞 [ DIAL ${step.official_resource} NOW ]
+            </a>
+          </div>
         ` : ''}
 
-        <label class="check-toggle">
-          <input type="checkbox" onchange="toggleStepComplete(${step.step_number}, this.checked)">
-          <span>Mark this step as completed</span>
-        </label>
+        <div>
+          <label class="check-toggle-label">
+            <input type="checkbox" onchange="toggleStepComplete(${step.step_number}, this.checked)">
+            <span>[✓] MARK ACTION AS EXECUTED</span>
+          </label>
+        </div>
       </div>
     `;
   });
@@ -458,12 +475,12 @@ function renderEmergencyPlan(plan) {
   html += `
       </div>
 
-      <div style="display: flex; gap: 12px; margin-top: 24px;">
-        <button class="btn btn-primary" onclick="exportCurrentPdf()">
-          📄 Export Official PDF Evidence Bundle
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px dashed rgba(0, 255, 102, 0.25);">
+        <button class="btn btn-primary" style="font-weight: 800;" onclick="exportCurrentPdf()">
+          📄 EXFILTRATE PDF EVIDENCE BUNDLE
         </button>
-        <button class="btn btn-outline" onclick="resetEmergencyFlow()">
-          + Report Another Incident
+        <button class="btn btn-secondary" onclick="resetEmergencyFlow()">
+          + LOG ANOTHER INCIDENT
         </button>
       </div>
     </div>
@@ -487,7 +504,7 @@ window.toggleStepComplete = async function(stepNum, completed) {
         completed: completed
       }
     });
-    showToast(`Step ${stepNum} updated: ${completed ? 'Completed' : 'Pending'}`);
+    showToast(`Step ${stepNum} status updated: ${completed ? 'Completed' : 'Pending'}`);
   } catch (err) {
     console.error('Step update error:', err);
   }
@@ -519,13 +536,13 @@ window.runScamCheck = async function() {
   const btn = document.getElementById('btn-run-scam-check');
   const resultBox = document.getElementById('scam-check-result');
   if (!input || !input.value.trim()) {
-    showToast('Please paste or type a message to check.', false);
+    showToast('Please paste payload to scan.', false);
     return;
   }
 
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = '🔍 Analyzing with Scam Shield AI...';
+    btn.innerHTML = '🔍 SCANNING AGAINST THREAT SIGNATURES...';
   }
 
   try {
@@ -539,43 +556,43 @@ window.runScamCheck = async function() {
 
     const isHigh = res.risk === 'high' || res.risk === 'critical';
     resultBox.style.display = 'block';
-    resultBox.className = `risk-indicator-box ${isHigh ? 'high' : 'low'}`;
+    resultBox.className = `detection-card ${isHigh ? 'high-risk' : ''}`;
     resultBox.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-        <span style="font-weight: 800; font-size: 1.1rem; color: ${isHigh ? '#EF4444' : '#10B981'};">
-          ${isHigh ? '🚨 HIGH RISK SCAM DETECTED' : '✅ LOW RISK / UNVERIFIED'}
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(0, 255, 102, 0.25);">
+        <span class="risk-badge ${isHigh ? 'high' : 'low'}">
+          ${isHigh ? '🚨 HIGH RISK THREAT DETECTED' : '✅ LOW RISK / VERIFIED SAFE'}
         </span>
-        <span style="font-size: 0.75rem; font-weight: 700; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: var(--radius-full);">
-          Confidence: ${res.confidence}
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--neon-cyan); background: #040907; border: 1px solid var(--neon-cyan); padding: 3px 10px; border-radius: 2px;">
+          CONFIDENCE: ${res.confidence.toUpperCase()}
         </span>
       </div>
 
-      <p style="font-size: 0.95rem; font-weight: 600; color: #F1F5F9; margin-bottom: 8px;">
-        Category: <span style="color: #FCA5A5;">${res.category.replace(/_/g, ' ').toUpperCase()}</span>
+      <p style="font-family: var(--font-hud); font-size: 1rem; font-weight: 800; color: #FFFFFF; margin-bottom: 8px; text-transform: uppercase;">
+        THREAT_CLASS: <span style="color: ${isHigh ? 'var(--cyber-red)' : 'var(--neon-green)'};">${res.category.replace(/_/g, ' ').toUpperCase()}</span>
       </p>
 
-      <p style="font-size: 0.9rem; color: #E2E8F0; line-height: 1.6; margin-bottom: 12px;">
+      <p style="font-size: 0.92rem; color: #D1FAE5; line-height: 1.6; margin-bottom: 12px;">
         ${res.explanation}
       </p>
 
       ${res.indicators && res.indicators.length ? `
-        <div style="background: rgba(0,0,0,0.25); border-radius: var(--radius-sm); padding: 10px; margin-bottom: 12px;">
-          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;">IDENTIFIED RED FLAGS:</div>
-          <ul style="padding-left: 20px; font-size: 0.85rem; color: #FCA5A5;">
+        <div class="flagged-items-box">
+          <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #FFA3B2; font-weight: 800; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em;">FLAGGED THREAT SIGNATURES:</div>
+          <ul style="padding-left: 20px; font-family: var(--font-mono); font-size: 0.88rem; color: #FFA3B2; font-weight: 700;">
             ${res.indicators.map(ind => `<li>${ind}</li>`).join('')}
           </ul>
         </div>
       ` : ''}
 
-      <div style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); border-radius: var(--radius-sm); padding: 10px;">
-        <span style="font-size: 0.85rem; font-weight: 700; color: #6EE7B7;">🛡️ Recommended Action:</span>
-        <span style="font-size: 0.85rem; color: #D1FAE5; margin-left: 6px;">${res.action}</span>
+      <div style="background: rgba(0, 255, 102, 0.1); border: 1.5px solid var(--neon-green); border-radius: 3px; padding: 12px 16px; margin-top: 14px;">
+        <span style="font-family: var(--font-hud); font-size: 0.85rem; font-weight: 800; color: var(--neon-green); text-transform: uppercase;">🛡️ TACTICAL ACTION REQUIRED:</span>
+        <span style="font-size: 0.88rem; color: #FFFFFF; margin-left: 6px;">${res.action}</span>
       </div>
     `;
 
     if (isHigh) {
       playAlertTone();
-      showToast('⚠️ Scam detected! Alert dispatched to guardian.', true);
+      showToast('⚠️ Scam detected! Alert telemetry dispatched to family grid.', true);
     }
   } catch (err) {
     console.error('Detection error:', err);
@@ -583,7 +600,7 @@ window.runScamCheck = async function() {
   } finally {
     if (btn) {
       btn.disabled = false;
-      btn.innerHTML = '🔍 Analyze Message';
+      btn.innerHTML = '🔍 SCAN & NEUTRALIZE THREAT';
     }
   }
 };
@@ -599,7 +616,7 @@ function startAlertPolling() {
       if (alerts && alerts.length > 0) {
         if (alerts.length > state.unreadAlertCount) {
           playAlertTone();
-          showToast(`🚨 New High-Risk Alert: ${alerts[0].category} flagged for family member!`, true);
+          showToast(`🚨 INTRUSION ALERT: ${alerts[0].category} flagged on family grid!`, true);
         }
         state.alerts = alerts;
         state.unreadAlertCount = alerts.length;
@@ -609,7 +626,7 @@ function startAlertPolling() {
         }
       }
     } catch (e) {
-      // Background poll silently retry
+      // Background poll retry
     }
   }, 4000);
 }
@@ -645,26 +662,32 @@ async function fetchFamilyMembers() {
       headers: { Authorization: `Bearer ${state.tokens.guardian}` }
     });
     el.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="family-shield-header">
         <div>
-          <span style="font-weight: 700; color: #fff;">Family Group:</span>
-          <span style="color: #93C5FD; font-weight: 600; margin-left: 6px;">${status.family_id.slice(0, 8)}</span>
-          <span style="margin-left: 12px; font-size: 0.8rem; background: rgba(59,130,246,0.2); padding: 2px 8px; border-radius: 4px; color: #BFDBFE;">
-            Join Code: <b>${status.join_code}</b>
+          <span style="font-family: var(--font-hud); font-weight: 800; color: var(--neon-green); font-size: 1.05rem; text-transform: uppercase;">FAMILY DEFENSE TELEMETRY</span>
+          <span style="margin-left: 10px; font-family: var(--font-mono); font-size: 0.82rem; color: var(--neon-cyan);">
+            GRID_ID: <code>${status.family_id.slice(0, 8)}</code>
           </span>
         </div>
-        <span style="font-size: 0.8rem; color: #10B981; font-weight: 600;">● Active Monitoring</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">JOIN_CODE:</span>
+          <span class="code-pill">${status.join_code}</span>
+        </div>
       </div>
-      <div style="margin-top: 12px; display: flex; gap: 8px;">
+      <div class="member-chip-row">
         ${status.members.map(m => `
-          <div style="background: rgba(255,255,255,0.06); padding: 6px 12px; border-radius: var(--radius-sm); font-size: 0.82rem;">
-            ${m.role === 'guardian' ? '🛡️' : '📱'} <b>${m.name}</b> (${m.phone})
+          <div class="member-chip">
+            <span style="font-size: 1.1rem;">${m.role === 'guardian' ? '🛡️' : '👵'}</span>
+            <div>
+              <div style="font-family: var(--font-hud); font-weight: 800; color: #FFFFFF; font-size: 0.9rem;">${m.name}</div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--neon-cyan);">${m.role === 'guardian' ? 'GUARDIAN (TELEMETRY RECEIVER)' : 'PROTECTED NODE'} • ${m.phone}</div>
+            </div>
           </div>
         `).join('')}
       </div>
     `;
   } catch (err) {
-    el.innerHTML = `<span style="color: var(--text-muted);">Family status synced.</span>`;
+    el.innerHTML = `<span style="font-family: var(--font-mono); color: var(--text-muted);">Family telemetry active.</span>`;
   }
 }
 
@@ -674,36 +697,36 @@ function renderAlertsList() {
 
   if (!state.alerts || state.alerts.length === 0) {
     listEl.innerHTML = `
-      <div style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.9rem;">
-        No active alerts. Your family is protected.
+      <div style="text-align: center; padding: 28px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.9rem; background: #030805; border: 1px dashed rgba(0, 255, 102, 0.2);">
+        ALL CHANNELS SECURE // NO ACTIVE THREAT TELEMETRY
       </div>
     `;
     return;
   }
 
   listEl.innerHTML = state.alerts.map(a => `
-    <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-md); padding: 16px; margin-bottom: 12px;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-        <div>
-          <span style="font-size: 0.75rem; font-weight: 800; background: var(--accent-red); color: #fff; padding: 2px 8px; border-radius: 4px;">
+    <div class="alert-feed-item">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="risk-badge high">
             ${a.severity.toUpperCase()}
           </span>
-          <span style="font-weight: 700; color: #F1F5F9; margin-left: 8px;">${a.category.replace(/_/g, ' ').toUpperCase()}</span>
+          <span style="font-family: var(--font-hud); font-weight: 800; color: #FFFFFF; font-size: 0.95rem; text-transform: uppercase;">${a.category.replace(/_/g, ' ').toUpperCase()}</span>
         </div>
-        <span style="font-size: 0.75rem; color: var(--text-muted);">${new Date(a.created_at).toLocaleTimeString()}</span>
+        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">${new Date(a.created_at).toLocaleTimeString()}</span>
       </div>
-      <p style="font-size: 0.88rem; color: #E2E8F0; margin-bottom: 8px;">
-        <b>Member:</b> ${a.member_name} — ${a.summary}
+      <p style="font-size: 0.9rem; color: #E6FFF2; margin-bottom: 6px;">
+        <b>TARGETED_MEMBER:</b> ${a.member_name} — ${a.summary}
       </p>
-      <p style="font-size: 0.82rem; color: #FCA5A5; margin-bottom: 12px;">
-        <i>Why:</i> ${a.why}
+      <p style="font-family: var(--font-mono); font-size: 0.85rem; color: #FF8093; margin-bottom: 14px; background: rgba(255, 0, 60, 0.12); border: 1px solid rgba(255, 0, 60, 0.3); padding: 8px 12px; border-radius: 2px;">
+        <i>WHY_FLAGGED:</i> ${a.why}
       </p>
-      <div style="display: flex; gap: 8px;">
-        <button class="btn btn-danger" style="padding: 6px 14px; font-size: 0.8rem;" onclick="callMember('${a.member_id}')">
-          📞 Call ${a.member_name}
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-danger" style="padding: 8px 16px; font-size: 0.82rem;" onclick="callMember('${a.member_id}')">
+          📞 CALL ${a.member_name} IMMEDIATELY
         </button>
-        <button class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;" onclick="ackAlert('${a.id}')">
-          ✓ Acknowledge
+        <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.82rem;" onclick="ackAlert('${a.id}')">
+          ✓ ACKNOWLEDGE THREAT
         </button>
       </div>
     </div>
@@ -716,7 +739,7 @@ window.ackAlert = async function(alertId) {
       method: 'POST',
       headers: { Authorization: `Bearer ${state.tokens.guardian}` }
     });
-    showToast('Alert acknowledged.');
+    showToast('Threat alert acknowledged.');
     fetchAlerts();
   } catch (err) {
     showToast(`Error: ${err.message}`, true);
@@ -724,7 +747,7 @@ window.ackAlert = async function(alertId) {
 };
 
 window.callMember = function(memberId) {
-  showToast('Connecting to parent phone: +91 9000000001');
+  showToast('Establishing direct voice channel to: +91 9000000001');
   window.location.href = 'tel:+919000000001';
 };
 
@@ -735,8 +758,8 @@ async function renderTimelineTab() {
 
   if (!state.activeIncidentId) {
     container.innerHTML = `
-      <div style="text-align: center; padding: 40px; color: var(--text-muted);">
-        No active incident. Generate an emergency plan or check a scam first.
+      <div style="text-align: center; padding: 36px; color: var(--text-muted); font-family: var(--font-mono); background: #030805; border: 1px dashed rgba(0, 255, 102, 0.2);">
+        AWAITING INCIDENT TRIAGE LOGS...
       </div>
     `;
     return;
@@ -745,19 +768,23 @@ async function renderTimelineTab() {
   try {
     const events = await api(`/incidents/${state.activeIncidentId}/events`);
     if (!events || events.length === 0) {
-      container.innerHTML = `<div style="color: var(--text-muted);">No timeline events recorded yet.</div>`;
+      container.innerHTML = `<div style="color: var(--text-muted); font-family: var(--font-mono);">No timeline events recorded yet.</div>`;
       return;
     }
 
     container.innerHTML = `
-      <div class="timeline">
+      <div class="timeline-track">
         ${events.map(ev => `
-          <div class="timeline-item ${ev.event_type.includes('alert') ? 'alert' : ''}">
-            <div class="timeline-dot"></div>
-            <div class="timeline-ts">${new Date(ev.server_ts).toLocaleTimeString()}</div>
-            <div class="timeline-content">
-              <b>${ev.event_type.replace(/_/g, ' ').toUpperCase()}</b>
-              <div style="color: var(--text-secondary); margin-top: 4px; font-size: 0.8rem;">
+          <div class="timeline-entry ${ev.event_type.includes('alert') ? 'alert-node' : ''}">
+            <div class="timeline-node"></div>
+            <div class="timeline-card-content">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-family: var(--font-hud); font-weight: 800; font-size: 0.88rem; color: var(--neon-green);">
+                  ${ev.event_type.replace(/_/g, ' ').toUpperCase()}
+                </span>
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--neon-cyan);">${new Date(ev.server_ts).toLocaleTimeString()}</span>
+              </div>
+              <div style="color: #A7F3D0; font-size: 0.82rem; font-family: var(--font-mono); background: #030805; border: 1px solid rgba(0, 255, 102, 0.15); padding: 8px 12px; border-radius: 2px; margin-top: 6px; word-break: break-all;">
                 ${JSON.stringify(ev.payload)}
               </div>
             </div>
@@ -766,7 +793,7 @@ async function renderTimelineTab() {
       </div>
     `;
   } catch (err) {
-    container.innerHTML = `<div style="color: #EF4444;">Error loading events: ${err.message}</div>`;
+    container.innerHTML = `<div style="color: var(--cyber-red); font-family: var(--font-mono);">Error loading events: ${err.message}</div>`;
   }
 }
 
@@ -775,7 +802,7 @@ window.exportCurrentPdf = function() {
     showToast('No active incident to export.', true);
     return;
   }
-  showToast('Generating official PDF evidence bundle...');
+  showToast('Exfiltrating official PDF evidence bundle...');
   window.open(`/incidents/${state.activeIncidentId}/export`, '_blank');
 };
 
