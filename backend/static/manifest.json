@@ -1,0 +1,16 @@
+{
+  "name": "AI Scam Shield",
+  "short_name": "ScamShield",
+  "description": "Emergency scam response engine — deterministic, source-cited, multilingual.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#2563EB",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

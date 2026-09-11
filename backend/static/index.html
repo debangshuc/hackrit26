@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Scam Shield — Emergency Scam Response System</title>
+  <meta name="description" content="Immediate 5-minute scam response engine for Indian families. Freeze accounts, block UPI, alert guardians, and export evidence bundles.">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/app.css">
+  <meta name="theme-color" content="#2563EB">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Top Header & Controls -->
+    <header class="top-header">
+      <div class="brand-section">
+        <div class="shield-icon">🛡️</div>
+        <div>
+          <h1 class="brand-title">AI Scam Shield</h1>
+          <div class="brand-subtitle" data-i18n="brand_sub">Emergency Cyber Response</div>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Language Selector -->
+        <select id="lang-select" class="pill-select" onchange="setLanguage(this.value)">
+          <option value="en">🌐 English</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+        </select>
+
+        <!-- Persona Switcher -->
+        <div id="persona-indicator" class="role-pill protected" onclick="switchPersona(state.currentPersona === 'protected' ? 'guardian' : 'protected')">
+          📱 Profile: মা / Maa (Protected)
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" role="tablist">
+      <button class="tab-btn active emergency-tab" data-tab="emergency" data-i18n="tab_emergency">
+        🚨 Emergency Help
+      </button>
+      <button class="tab-btn" data-tab="check" data-i18n="tab_check">
+        🔍 Scam Check
+      </button>
+      <button class="tab-btn" data-tab="guardian">
+        <span data-i18n="tab_guardian">👨‍👩‍👦 Family & Alerts</span>
+        <span id="guardian-badge" class="badge-count" style="display: none;">0</span>
+      </button>
+      <button class="tab-btn" data-tab="timeline" data-i18n="tab_timeline">
+        📋 Evidence & Export
+      </button>
+    </nav>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 1: EMERGENCY INTAKE & ACTION PLAN -->
+    <!-- ======================================================================= -->
+    <section id="tab-emergency" class="tab-content" style="display: block;">
+      
+      <!-- Big Hero Emergency Trigger -->
+      <div id="emergency-hero" class="glass-panel danger-glow" style="text-align: center; padding: 36px 24px;">
+        <div style="font-size: 3.5rem; margin-bottom: 12px; animation: pulse 2s infinite;">🚨</div>
+        <h2 style="font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 8px;" data-i18n="hero_btn">
+          I ALREADY PAID / SENT MONEY
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 28px auto; font-size: 0.95rem;" data-i18n="hero_sub">
+          Immediate 5-minute freeze for bank accounts, UPI & SIM. Every minute counts.
+        </p>
+        <button class="btn-emergency-hero" onclick="startEmergencyFlow()">
+          <span>⚡ START 60-SECOND EMERGENCY INTAKE</span>
+        </button>
+      </div>
+
+      <!-- 3-Screen Intake Wizard -->
+      <div id="emergency-wizard" class="glass-panel" style="display: none;">
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+          <div id="intake-progress" class="progress-bar"></div>
+        </div>
+
+        <!-- Wizard Step 1: What Happened? -->
+        <div id="intake-step-1" class="wizard-step active">
+          <h2 class="section-title" data-i18n="screen1_title">Step 1: What happened?</h2>
+          <p class="section-desc" data-i18n="screen1_sub">Select all that apply. Act immediately.</p>
+
+          <div class="option-grid">
+            <div class="option-card selected urgent" onclick="toggleScamType('money_sent', this)">
+              <div class="option-icon">💸</div>
+              <div>
+                <div class="option-label">Sent Money</div>
+                <div class="option-sub">Via UPI, Bank, or Card</div>
+              </div>
+            </div>
+            <div class="option-card" onclick="toggleScamType('otp_shared', this)">
+              <div class="option-icon">🔑</div>
+              <div>
+                <div class="option-label">OTP / PIN Shared</div>
+                <div class="option-sub">Given over phone or link</div>
+              </div>
+            </div>
+            <div class="option-card" onclick="toggleScamType('app_installed', this)">
+              <div class="option-icon">📲</div>
+              <div>
+                <div class="option-label">App Installed</div>
+                <div class="option-sub">AnyDesk, TeamViewer, APK</div>
+              </div>
+            </div>
+            <div class="option-card" onclick="toggleScamType('bank_details_shared', this)">
+              <div class="option-icon">🏦</div>
+              <div>
+                <div class="option-label">Bank Account Shared</div>
+                <div class="option-sub">Card number or NetBanking</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+            <button class="btn btn-primary" onclick="nextIntakeStep()" data-i18n="btn_next">Next →</button>
+          </div>
+        </div>
+
+        <!-- Wizard Step 2: When? (Golden Window) -->
+        <div id="intake-step-2" class="wizard-step">
+          <h2 class="section-title" data-i18n="screen2_title">Step 2: How long ago did this happen?</h2>
+          <p class="section-desc" data-i18n="screen2_sub">Within 30 minutes is the golden window to freeze funds.</p>
+
+          <div class="option-grid" id="timeband-options">
+            <div class="option-card urgent" onclick="setTimeBand('under_5_min', this)">
+              <div class="option-icon">⚡</div>
+              <div>
+                <div class="option-label">Under 5 minutes ago</div>
+                <div class="option-sub">Highest chance of full recovery</div>
+              </div>
+            </div>
+            <div class="option-card selected urgent" onclick="setTimeBand('5_to_30_min', this)">
+              <div class="option-icon">⏱️</div>
+              <div>
+                <div class="option-label">5 to 30 minutes ago</div>
+                <div class="option-sub">Immediate bank freeze window</div>
+              </div>
+            </div>
+            <div class="option-card" onclick="setTimeBand('30_to_2h', this)">
+              <div class="option-icon">⏳</div>
+              <div>
+                <div class="option-label">30 minutes to 2 hours</div>
+                <div class="option-sub">Account security & 1930 reporting</div>
+              </div>
+            </div>
+            <div class="option-card" onclick="setTimeBand('over_2h', this)">
+              <div class="option-icon">📅</div>
+              <div>
+                <div class="option-label">Over 2 hours ago</div>
+                <div class="option-sub">Evidence logging & police FIR</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <button class="btn btn-secondary" onclick="prevIntakeStep()" data-i18n="btn_back">← Back</button>
+            <button class="btn btn-primary" onclick="nextIntakeStep()" data-i18n="btn_next">Next →</button>
+          </div>
+        </div>
+
+        <!-- Wizard Step 3: Transfer Details -->
+        <div id="intake-step-3" class="wizard-step">
+          <h2 class="section-title" data-i18n="screen3_title">Step 3: Transfer details</h2>
+          <p class="section-desc" data-i18n="screen3_sub">Helps us pinpoint your bank's exact freeze helpline.</p>
+
+          <div class="form-group">
+            <label class="form-label">Approximate Amount Lost</label>
+            <select class="form-select" onchange="state.intake.amountBand = this.value">
+              <option value="under_1k">Under ₹1,000</option>
+              <option value="1k_to_10k">₹1,000 – ₹10,000</option>
+              <option value="10k_to_50k" selected>₹10,000 – ₹50,000 (Demo ₹10,000 beat)</option>
+              <option value="50k_to_1l">₹50,000 – ₹1,00,000</option>
+              <option value="over_1l">Over ₹1,00,000</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Payment Channel</label>
+            <select class="form-select" onchange="state.intake.paymentMethod = this.value">
+              <option value="upi" selected>UPI (GPay / PhonePe / Paytm)</option>
+              <option value="bank_transfer">IMPS / NEFT / NetBanking</option>
+              <option value="card">Debit / Credit Card</option>
+              <option value="wallet">Mobile Wallet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Bank or App Compromised</label>
+            <input type="text" class="form-input" value="GPay / SBI" oninput="state.intake.serviceCompromised = this.value">
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+            <button class="btn btn-secondary" onclick="prevIntakeStep()" data-i18n="btn_back">← Back</button>
+            <button id="btn-submit-emergency" class="btn btn-danger" style="font-weight: 700; padding: 12px 24px;" onclick="submitEmergency()" data-i18n="btn_generate_plan">
+              ⚡ Generate Emergency Plan NOW
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Plan View (Appears after submission) -->
+      <div id="emergency-plan-view" style="display: none;"></div>
+
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 2: SCAM CHECK (Beat 2) -->
+    <!-- ======================================================================= -->
+    <section id="tab-check" class="tab-content" style="display: none;">
+      <div class="glass-panel">
+        <h2 class="section-title">🔍 AI Scam Detector</h2>
+        <p class="section-desc">Paste any suspicious SMS, WhatsApp message, or UPI link to check authenticity.</p>
+
+        <!-- Presets -->
+        <div style="margin-bottom: 12px;">
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;" data-i18n="demo_presets_title">Demo presets:</span>
+          <div class="preset-bar" style="margin-top: 6px;">
+            <button class="preset-chip" onclick="loadPresetText('electricity')" data-i18n="preset_elec">⚡ Electricity Bill Scam</button>
+            <button class="preset-chip" onclick="loadPresetText('kyc')" data-i18n="preset_kyc">🏦 Bank KYC Scam</button>
+            <button class="preset-chip" onclick="loadPresetText('lottery')" data-i18n="preset_lottery">🎁 Prize / Lottery Scam</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <textarea id="scam-check-input" class="form-textarea" rows="4" placeholder="Paste message here..." data-i18n="scam_input_placeholder"></textarea>
+        </div>
+
+        <button id="btn-run-scam-check" class="btn btn-primary" style="width: 100%; padding: 14px;" onclick="runScamCheck()" data-i18n="btn_check_scam">
+          🔍 Analyze Message
+        </button>
+
+        <!-- Detection Result Box -->
+        <div id="scam-check-result" style="display: none;"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 3: FAMILY & GUARDIAN ALERTS (Beat 3) -->
+    <!-- ======================================================================= -->
+    <section id="tab-guardian" class="tab-content" style="display: none;">
+      <div class="glass-panel">
+        <h2 class="section-title" data-i18n="guardian_header">Family Protection & Real-time Alerts</h2>
+        <p class="section-desc">Guardians receive real-time, privacy-preserving alerts when loved ones encounter scams.</p>
+
+        <div id="family-status-box" style="background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px; margin-bottom: 20px;">
+          <span style="color: var(--text-muted);">Checking family status...</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <h3 style="font-size: 1.05rem; font-weight: 700;">Live Alerts Feed</h3>
+          <span style="font-size: 0.75rem; color: #10B981; font-weight: 600;">● Polling every 4s</span>
+        </div>
+
+        <div id="alerts-feed">
+          <div style="text-align: center; padding: 24px; color: var(--text-muted);">
+            No alerts active. All protected members safe.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TAB 4: TIMELINE & EVIDENCE EXPORT (Beat 4) -->
+    <!-- ======================================================================= -->
+    <section id="tab-timeline" class="tab-content" style="display: none;">
+      <div class="glass-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <div>
+            <h2 class="section-title">📋 Live Incident Timeline</h2>
+            <p class="section-desc">Cryptographically sequenced, append-only event stream for cybercrime reporting.</p>
+          </div>
+          <button class="btn btn-primary" onclick="exportCurrentPdf()" data-i18n="download_pdf_btn">
+            📄 Download PDF Evidence Bundle
+          </button>
+        </div>
+
+        <div id="timeline-feed">
+          <div style="text-align: center; padding: 30px; color: var(--text-muted);">
+            Start an emergency flow to view the live timeline.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
