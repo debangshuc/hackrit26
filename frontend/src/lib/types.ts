@@ -104,6 +104,41 @@ export interface Incident {
   status: IncidentStatus;
   created_at: string;
   plan?: EmergencyPlan;
+  facts?: {
+    incident_type?: string;
+    category?: string;
+    amount?: string;
+    currency?: string;
+    payment_method?: string;
+    transaction_id?: string;
+    scammer_contact?: string;
+    what_happened?: string;
+    checklist_progress?: string;
+    [key: string]: any;
+  };
+}
+
+export interface GuardianEmergencyAlertRequest {
+  incident_type?: string;
+  category?: string;
+  severity?: Severity;
+  amount?: string;
+  currency?: string;
+  payment_method?: string;
+  transaction_id?: string;
+  scammer_contact?: string;
+  what_happened?: string;
+  checklist_progress?: string;
+}
+
+export interface GuardianEmergencyAlertResponse {
+  status: string;
+  alert_id: string;
+  incident_id: string;
+  family_id: string;
+  severity: Severity;
+  summary: string;
+  timestamp: string;
 }
 
 export interface IncidentEvent {
@@ -156,6 +191,16 @@ export interface Alert {
   created_at: string;
   acked_at?: string;
   is_false_alarm: boolean;
+  payload?: {
+    incident_id?: string;
+    amount?: string;
+    currency?: string;
+    payment_method?: string;
+    transaction_id?: string;
+    category?: string;
+    scammer_contact?: string;
+    checklist_progress?: string;
+  };
 }
 
 // ─── UI Helpers ──────────────────────────────────────────────────────────────

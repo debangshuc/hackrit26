@@ -169,6 +169,7 @@ class IncidentOut(BaseModel):
     status: IncidentStatus
     created_at: datetime
     plan: Optional[EmergencyPlan] = None
+    facts: Optional[dict] = None
 
 
 class IncidentEventOut(BaseModel):
@@ -258,10 +259,34 @@ class AlertOut(BaseModel):
     created_at: datetime
     acked_at: Optional[datetime] = None
     is_false_alarm: bool = False
+    payload: Optional[dict] = None
 
 
 class AlertAckRequest(BaseModel):
     acked: bool = True
+
+
+class GuardianEmergencyAlertRequest(BaseModel):
+    incident_type: str = Field(default="Financial Scam")
+    category: str = Field(default="UPI / Payment")
+    severity: Severity = Field(default=Severity.CRITICAL)
+    amount: Optional[str] = None
+    currency: Optional[str] = "₹ INR"
+    payment_method: Optional[str] = None
+    transaction_id: Optional[str] = None
+    scammer_contact: Optional[str] = None
+    what_happened: Optional[str] = None
+    checklist_progress: Optional[str] = None
+
+
+class GuardianEmergencyAlertResponse(BaseModel):
+    status: str = "alert_sent"
+    alert_id: str
+    incident_id: str
+    family_id: str
+    severity: Severity
+    summary: str
+    timestamp: datetime
 
 
 # ─── Message Schemas ──────────────────────────────────────────────────────────

@@ -136,6 +136,24 @@ class ApiClient {
 
   // ─── Alerts ────────────────────────────────────────────────────────────
 
+  async createEmergencyAlert(data: {
+    incident_type?: string;
+    category?: string;
+    severity?: string;
+    amount?: string;
+    currency?: string;
+    payment_method?: string;
+    transaction_id?: string;
+    scammer_contact?: string;
+    what_happened?: string;
+    checklist_progress?: string;
+  }) {
+    return this.request<any>('/alerts/emergency', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  }
+
   async pollAlerts(unackedOnly: boolean = true) {
     return this.request<any>(`/alerts/poll?unacked_only=${unackedOnly}`);
   }

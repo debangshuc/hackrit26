@@ -109,6 +109,13 @@ async def get_incident(
     if row["plan_json"]:
         plan = EmergencyPlan.model_validate_json(row["plan_json"])
 
+    facts = None
+    if row["facts_json"]:
+        try:
+            facts = json.loads(row["facts_json"])
+        except Exception:
+            facts = None
+
     return IncidentOut(
         id=row["id"],
         family_id=row["family_id"],
@@ -118,6 +125,7 @@ async def get_incident(
         status=IncidentStatus(row["status"]),
         created_at=row["created_at"],
         plan=plan,
+        facts=facts,
     )
 
 
@@ -209,6 +217,12 @@ async def list_incidents(
         plan = None
         if row["plan_json"]:
             plan = EmergencyPlan.model_validate_json(row["plan_json"])
+        facts = None
+        if row["facts_json"]:
+            try:
+                facts = json.loads(row["facts_json"])
+            except Exception:
+                facts = None
         results.append(IncidentOut(
             id=row["id"],
             family_id=row["family_id"],
@@ -218,6 +232,7 @@ async def list_incidents(
             status=IncidentStatus(row["status"]),
             created_at=row["created_at"],
             plan=plan,
+            facts=facts,
         ))
     return results
 

@@ -71,7 +71,7 @@ async def login(req: LoginRequest, db: aiosqlite.Connection = Depends(get_db)):
 @router.post("/demo-setup")
 async def demo_setup(db: aiosqlite.Connection = Depends(get_db)):
     """
-    One-click demo setup: create pre-configured demo users.
+    One-click demo setup: create pre-configured demo users and linked family circle.
     Call this once to seed the demo scenario.
     """
     demo_users = [
@@ -81,6 +81,7 @@ async def demo_setup(db: aiosqlite.Connection = Depends(get_db)):
             "name": "মা (Maa)",
             "role": "protected",
             "lang": "bn",
+            "family_id": "demo-family-1",
         },
         {
             "id": "demo-guardian-1",
@@ -88,6 +89,7 @@ async def demo_setup(db: aiosqlite.Connection = Depends(get_db)):
             "name": "Rina (Guardian)",
             "role": "guardian",
             "lang": "en",
+            "family_id": "demo-family-1",
         },
         {
             "id": "demo-protected-2",
@@ -95,15 +97,27 @@ async def demo_setup(db: aiosqlite.Connection = Depends(get_db)):
             "name": "बाबूजी (Babuji)",
             "role": "protected",
             "lang": "hi",
+            "family_id": None,
         },
     ]
+
+    # Create demo family
+    try:
+        await db.execute(
+            "INSERT OR IGNORE INTO families (id, join_code, created_by) VALUES (?, ?, ?)",
+            ("demo-family-1", "123456", "demo-guardian-1"),
+        )
+    except Exception:
+        pass
 
     created = []
     for user in demo_users:
         try:
             await db.execute(
-                "INSERT OR IGNORE INTO users (id, phone, name, role, lang) VALUES (?, ?, ?, ?, ?)",
-                (user["id"], user["phone"], user["name"], user["role"], user["lang"]),
+                """INSERT INTO users (id, phone, name, role, lang, family_id)
+                   VALUES (?, ?, ?, ?, ?, ?)
+                   ON CONFLICT(id) DO UPDATE SET family_id=excluded.family_id, phone=excluded.phone, name=excluded.name""",
+                (user["id"], user["phone"], user["name"], user["role"], user["lang"], user["family_id"]),
             )
             created.append(user["phone"])
         except Exception:
@@ -111,8 +125,10 @@ async def demo_setup(db: aiosqlite.Connection = Depends(get_db)):
 
     await db.commit()
     return {
-        "message": "Demo users created",
+        "message": "Demo users & Family Circle created",
         "users": created,
+        "family_id": "demo-family-1",
+        "join_code": "123456",
         "otp": "123456",
-        "note": "Use any of these phones with OTP 123456 to login.",
+        "note": "Use +919000000001 (Maa) or +919000000002 (Guardian Rina) with OTP 123456.",
     }

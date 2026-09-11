@@ -71,7 +71,51 @@ export default function GuardianIncidentPage() {
         </span>
       </div>
 
-      {/* Plan progress */}
+      {/* Recorded Incident Facts */}
+      {incident.facts && (
+        <div className="glass-card-strong p-6 mb-6">
+          <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <span>📋</span> Recorded Incident Facts
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs">
+            <div className="p-3 rounded-lg bg-white/5">
+              <span className="text-[var(--text-muted)] block uppercase">Incident Type:</span>
+              <span className="text-white font-bold">{incident.facts.incident_type || incident.facts.category || 'Scam Incident'}</span>
+            </div>
+            <div className="p-3 rounded-lg bg-white/5">
+              <span className="text-[var(--text-muted)] block uppercase">Amount Lost:</span>
+              <span className="text-[#00FF66] font-bold">{incident.facts.amount || 'Not provided'}</span>
+            </div>
+            <div className="p-3 rounded-lg bg-white/5">
+              <span className="text-[var(--text-muted)] block uppercase">Payment Method:</span>
+              <span className="text-gray-200">{incident.facts.payment_method || 'Not provided'}</span>
+            </div>
+            <div className="p-3 rounded-lg bg-white/5">
+              <span className="text-[var(--text-muted)] block uppercase">Transaction ID / UTR:</span>
+              <span className="text-white font-bold">{incident.facts.transaction_id || 'Not provided'}</span>
+            </div>
+          </div>
+
+          {(incident.facts.scammer_contact || incident.facts.what_happened) && (
+            <div className="mt-4 pt-4 border-t border-white/10 space-y-3 font-mono text-xs">
+              {incident.facts.scammer_contact && (
+                <div>
+                  <span className="text-[var(--text-muted)] uppercase">Scammer Contact: </span>
+                  <span className="text-red-300 font-bold">{incident.facts.scammer_contact}</span>
+                </div>
+              )}
+              {incident.facts.what_happened && (
+                <div>
+                  <span className="text-[var(--text-muted)] uppercase block mb-1">Victim Statement:</span>
+                  <p className="p-3 rounded bg-black/40 text-gray-300 font-sans text-xs sm:text-sm leading-relaxed whitespace-pre-wrap">
+                    {incident.facts.what_happened}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
       {incident.plan && (
         <div className="glass-card-strong p-6 mb-6">
           <h2 className="text-lg font-semibold mb-4">Action Plan Progress</h2>

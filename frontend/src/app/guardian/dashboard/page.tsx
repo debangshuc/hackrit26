@@ -129,17 +129,42 @@ export default function GuardianDashboard() {
                       </span>
                     )}
                   </div>
-                  <p className="text-[var(--text-primary)] font-medium mb-1">{alert.summary}</p>
+                  <p className="text-[var(--text-primary)] font-bold text-base mb-1">{alert.summary}</p>
                   <p className="text-sm text-[var(--text-secondary)]">{alert.why}</p>
-                  <p className="text-xs text-[var(--text-muted)] mt-2">
-                    From: {alert.member_name}
+
+                  {/* Structured Emergency Incident Facts */}
+                  {alert.payload && (alert.payload.amount || alert.payload.transaction_id || alert.payload.payment_method) && (
+                    <div className="mt-3 p-3.5 rounded-lg bg-black/40 border border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+                      {alert.payload.amount && (
+                        <div>
+                          <span className="text-[var(--text-muted)] block text-[10px] uppercase">Amount:</span>
+                          <span className="text-[#00FF66] font-bold">{alert.payload.amount}</span>
+                        </div>
+                      )}
+                      {alert.payload.transaction_id && (
+                        <div>
+                          <span className="text-[var(--text-muted)] block text-[10px] uppercase">Transaction ID / UTR:</span>
+                          <span className="text-white font-bold">{alert.payload.transaction_id}</span>
+                        </div>
+                      )}
+                      {alert.payload.payment_method && (
+                        <div>
+                          <span className="text-[var(--text-muted)] block text-[10px] uppercase">Payment:</span>
+                          <span className="text-gray-200">{alert.payload.payment_method}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  <p className="text-xs text-[var(--text-muted)] mt-2 font-mono">
+                    Protected Member: <strong className="text-white">{alert.member_name}</strong>
                   </p>
                 </div>
               </div>
 
               {/* Actions */}
               {!alert.acked_at && !alert.is_false_alarm && (
-                <div className="flex gap-2 mt-4">
+                <div className="flex flex-wrap gap-2.5 mt-4">
                   <button
                     onClick={() => handleAck(alert.id)}
                     className="btn-primary text-xs py-2 px-4"
@@ -148,25 +173,25 @@ export default function GuardianDashboard() {
                   </button>
                   <button
                     onClick={() => {
-                      // Try to find related incident
-                      const payload = alert as any;
-                      if (payload.payload_json) {
+                      const incidentId = alert.payload?.incident_id || (alert as any).incident_id;
+                      if (incidentId) {
+                        router.push(`/guardian/incident?id=${incidentId}`);
+                      } else if ((alert as any).payload_json) {
                         try {
-                          const p = JSON.parse(payload.payload_json);
+                          const p = JSON.parse((alert as any).payload_json);
                           if (p.incident_id) {
                             router.push(`/guardian/incident?id=${p.incident_id}`);
-                            return;
                           }
                         } catch {}
                       }
                     }}
                     className="btn-secondary text-xs py-2 px-4"
                   >
-                    👁️ View Advice
+                    👁️ View Incident &amp; Timeline
                   </button>
                   <button
                     onClick={() => handleFalseAlarm(alert.id)}
-                    className="text-xs text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-all px-3"
+                    className="text-xs text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-all px-3 py-2"
                   >
                     Mark False Alarm
                   </button>
