@@ -9,10 +9,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AI Scam Shield — Emergency Scam Response",
+  title: "RedFlag — Emergency Cyber Defense & Scam Scanner",
   description:
-    "Not 'is this a scam?' — 'you may already be a victim. Here's exactly what to do in the next 5 minutes,' in your language, with your family looped in.",
-  keywords: "scam, fraud, emergency, response, India, cybercrime, 1930",
+    "Instant AI-powered scam detection, Golden Hour emergency response, and family guardian protection for Indian citizens.",
+  keywords: "scam, fraud, emergency, response, India, cybercrime, 1930, RedFlag",
 };
 
 export default function RootLayout({

@@ -8,19 +8,19 @@ export type LangKey = 'en' | 'bn' | 'hi';
 const translations: Record<string, Record<LangKey, string>> = {
   // ─── App ───────────────────────────────────────────────────────────────
   'app.name': {
-    en: 'Scam Shield',
-    bn: 'স্ক্যাম শিল্ড',
-    hi: 'स्कैम शील्ड',
+    en: 'RedFlag',
+    bn: 'রেডফ্ল্যাগ',
+    hi: 'रेडफ्लैग',
   },
   'app.tagline': {
-    en: 'Your emergency scam response system',
-    bn: 'আপনার জরুরি প্রতারণা প্রতিক্রিয়া ব্যবস্থা',
-    hi: 'आपकी आपातकालीन धोखाधड़ी प्रतिक्रिया प्रणाली',
+    en: 'Your emergency scam defense system',
+    bn: 'আপনার জরুরি প্রতারণা প্রতিরোধ ব্যবস্থা',
+    hi: 'आपकी आपातकालीन धोखाधड़ी रक्षा प्रणाली',
   },
   'app.anti_impersonation': {
-    en: 'Scam Shield will NEVER ask for your OTP, PIN, or password.',
-    bn: 'স্ক্যাম শিল্ড কখনই আপনার OTP, PIN বা পাসওয়ার্ড চাইবে না।',
-    hi: 'स्कैम शील्ड कभी भी आपका OTP, PIN या पासवर्ड नहीं मांगेगा।',
+    en: 'RedFlag will NEVER ask for your OTP, PIN, or password.',
+    bn: 'রেডফ্ল্যাগ কখনই আপনার OTP, PIN বা পাসওয়ার্ড চাইবে না।',
+    hi: 'रेडफ्लैग कभी भी आपका OTP, PIN या पासवर्ड नहीं मांगेगा।',
   },
 
   // ─── Login ─────────────────────────────────────────────────────────────

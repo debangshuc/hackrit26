@@ -5,14 +5,17 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth';
 
 export default function GuardianLayout({ children }: { children: React.ReactNode }) {
-  const { user, isLoading, logout } = useAuth();
+  const { user, isLoading, login, logout } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/login?role=guardian');
+      // Auto-connect as demo guardian Rina for seamless demo viewing
+      login('+919000000002', '123456').catch(() => {
+        router.push('/login?role=guardian');
+      });
     }
-  }, [user, isLoading, router]);
+  }, [user, isLoading, router, login]);
 
   if (isLoading || !user) {
     return (

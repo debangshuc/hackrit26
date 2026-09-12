@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     """App settings loaded from environment variables."""
 
     # App
-    APP_NAME: str = "AI Scam Shield"
+    APP_NAME: str = "RedFlag"
     DEBUG: bool = True
 
     # JWT

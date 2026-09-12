@@ -267,10 +267,10 @@ export default function HomePage() {
               onClick={() => setIsEmergencyMode(false)}
               className="text-lg sm:text-xl font-black tracking-widest text-white uppercase flex items-center gap-2.5 font-mono cursor-pointer"
             >
-              <span className="text-[#00e5a3] text-xl">🛡️</span> SCAM<span className="text-[#00e5a3]">SHIELD</span>
+              <span className="text-red-500 text-xl">🚩</span> RED<span className="text-[#00e5a3]">FLAG</span>
             </button>
             <span className="text-[10px] uppercase font-mono tracking-wider px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[var(--text-secondary)] hidden sm:inline-block">
-              AI SEC_OPS v1.0
+              CYBER_INTEL v1.0
             </span>
           </div>
 
@@ -356,7 +356,7 @@ export default function HomePage() {
                 </h1>
 
                 <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl font-normal">
-                  We combine Google Gemini semantic intelligence with expert emergency guidance
+                  We combine advanced neural threat intelligence with expert emergency guidance
                   to protect your funds, detect threats early, and organize evidence before stolen funds disappear.
                 </p>
 
@@ -942,7 +942,7 @@ export default function HomePage() {
             </a>
           </div>
           <p className="text-[12px] text-[var(--text-muted)] max-w-lg mx-auto leading-relaxed">
-            AI Scam Shield is an emergency cybersecurity response utility. Always report incidents directly to your financial institution and official law enforcement.
+            RedFlag is an emergency cybersecurity response utility. Always report incidents directly to your financial institution and official law enforcement.
           </p>
         </div>
       </footer>
