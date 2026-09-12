@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #030407;
-  --bg-secondary: #07090e;
-  --bg-card: #080a0f;
-  --bg-card-inner: #05070a;
+  --bg-primary: #0a0e17;
+  --bg-secondary: #0f1422;
+  --bg-card: #141a29;
+  --bg-card-inner: #0e1320;
   --text-primary: #ffffff;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
-  --accent-green: #00FF66;
-  --accent-green-hover: #0df56b;
-  --accent-green-dim: rgba(0, 255, 102, 0.12);
-  --accent-green-border: rgba(0, 255, 102, 0.35);
+  --accent-green: #00e5a3;
+  --accent-green-hover: #1cf0b0;
+  --accent-green-dim: rgba(0, 229, 163, 0.12);
+  --accent-green-border: rgba(0, 229, 163, 0.35);
   --severity-critical: #ef4444;
   --severity-high: #f97316;
   --severity-medium: #f59e0b;
-  --severity-low: #10b981;
+  --severity-low: #00e5a3;
   --border: rgba(255, 255, 255, 0.08);
   --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-cyan: rgba(0, 229, 163, 0.3);
 }
 
 * {
@@ -74,8 +75,8 @@ body {
   transform: translateX(-50%);
   width: 100%;
   max-width: 1200px;
-  height: 500px;
-  background: radial-gradient(ellipse 75% 50% at 50% -20%, rgba(0, 255, 102, 0.08), transparent 70%);
+  height: 520px;
+  background: radial-gradient(ellipse 75% 50% at 50% -20%, rgba(0, 229, 163, 0.1), transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -87,8 +88,8 @@ body {
   transform: translateX(-50%);
   width: 100%;
   max-width: 1200px;
-  height: 500px;
-  background: radial-gradient(ellipse 75% 50% at 50% -20%, rgba(239, 68, 68, 0.09), transparent 70%);
+  height: 520px;
+  background: radial-gradient(ellipse 75% 50% at 50% -20%, rgba(239, 68, 68, 0.12), transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -98,7 +99,7 @@ body {
 .cyber-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   position: relative;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 28px -2px rgba(0, 0, 0, 0.45);
@@ -109,38 +110,38 @@ body {
 }
 
 .cyber-card-danger {
-  background: #090507;
+  background: #140d12;
   border: 1px solid rgba(239, 68, 68, 0.35);
-  border-radius: 10px;
+  border-radius: 12px;
   position: relative;
-  box-shadow: 0 4px 32px -2px rgba(239, 68, 68, 0.08);
+  box-shadow: 0 4px 32px -2px rgba(239, 68, 68, 0.1);
 }
 
 .cyber-card-inner {
   background: var(--bg-card-inner);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   transition: all 0.2s ease;
 }
 
 .cyber-card-inner:hover {
-  border-color: rgba(0, 255, 102, 0.28);
-  background: #06090e;
+  border-color: rgba(0, 229, 163, 0.35);
+  background: #121827;
   transform: translateY(-1px);
 }
 
 /* ─── Standardized Buttons (Spacious, High-Contrast) ─────────────────────── */
 
 .btn-cyber-primary {
-  height: 50px;
+  height: 48px;
   background-color: var(--accent-green);
-  color: #000000;
+  color: #080c14;
   font-weight: 700;
   font-size: 13.5px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0 28px;
-  border-radius: 6px;
+  padding: 0 26px;
+  border-radius: 8px;
   border: none;
   display: inline-flex;
   align-items: center;
@@ -148,13 +149,13 @@ body {
   gap: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 25px rgba(0, 255, 102, 0.22);
+  box-shadow: 0 0 24px rgba(0, 229, 163, 0.25);
   white-space: nowrap;
 }
 
 .btn-cyber-primary:hover {
   background-color: var(--accent-green-hover);
-  box-shadow: 0 0 32px rgba(0, 255, 102, 0.4);
+  box-shadow: 0 0 32px rgba(0, 229, 163, 0.45);
   transform: translateY(-1px);
 }
 
@@ -166,15 +167,15 @@ body {
 }
 
 .btn-cyber-primary-sm {
-  height: 40px;
+  height: 38px;
   background-color: var(--accent-green);
-  color: #000000;
+  color: #080c14;
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0 18px;
-  border-radius: 5px;
+  padding: 0 16px;
+  border-radius: 6px;
   border: none;
   display: inline-flex;
   align-items: center;
@@ -182,25 +183,25 @@ body {
   gap: 7px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 18px rgba(0, 255, 102, 0.2);
+  box-shadow: 0 0 18px rgba(0, 229, 163, 0.22);
   white-space: nowrap;
 }
 
 .btn-cyber-primary-sm:hover {
   background-color: var(--accent-green-hover);
-  box-shadow: 0 0 20px rgba(0, 255, 102, 0.35);
+  box-shadow: 0 0 24px rgba(0, 229, 163, 0.4);
 }
 
 .btn-cyber-danger {
-  height: 50px;
+  height: 48px;
   background: #dc2626;
   color: #ffffff;
   font-weight: 700;
   font-size: 13.5px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0 28px;
-  border-radius: 6px;
+  padding: 0 26px;
+  border-radius: 8px;
   border: none;
   display: inline-flex;
   align-items: center;
@@ -219,15 +220,15 @@ body {
 }
 
 .btn-cyber-danger-sm {
-  height: 40px;
+  height: 38px;
   background: #dc2626;
   color: #ffffff;
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0 18px;
-  border-radius: 5px;
+  padding: 0 16px;
+  border-radius: 6px;
   border: none;
   display: inline-flex;
   align-items: center;
@@ -245,16 +246,16 @@ body {
 }
 
 .btn-cyber-outline {
-  height: 50px;
-  background: transparent;
-  color: #ffffff;
+  height: 48px;
+  background: rgba(0, 229, 163, 0.04);
+  color: var(--accent-green);
   font-weight: 600;
   font-size: 13.5px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0 28px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 229, 163, 0.35);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -265,22 +266,23 @@ body {
 }
 
 .btn-cyber-outline:hover {
-  border-color: rgba(255, 255, 255, 0.55);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-green);
+  background: rgba(0, 229, 163, 0.12);
   transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(0, 229, 163, 0.15);
 }
 
 .btn-cyber-outline-sm {
-  height: 40px;
-  background: transparent;
-  color: #ffffff;
+  height: 38px;
+  background: rgba(0, 229, 163, 0.04);
+  color: var(--accent-green);
   font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0 18px;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 229, 163, 0.3);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -291,8 +293,8 @@ body {
 }
 
 .btn-cyber-outline-sm:hover {
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-green);
+  background: rgba(0, 229, 163, 0.12);
 }
 
 /* Fallback compatibility classes */
@@ -338,9 +340,9 @@ body {
   gap: 10px;
   padding: 6px 16px;
   border-radius: 9999px;
-  background: rgba(0, 255, 102, 0.05);
-  border: 1px solid rgba(0, 255, 102, 0.25);
-  color: #d1fae5;
+  background: rgba(0, 229, 163, 0.08);
+  border: 1px solid rgba(0, 229, 163, 0.3);
+  color: #e2fbf3;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.03em;
@@ -385,15 +387,15 @@ body {
   left: 0;
   right: 0;
   height: 1.5px;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 102, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 229, 163, 0.45), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .cyber-metric-card:hover {
-  border-color: rgba(0, 255, 102, 0.35);
+  border-color: rgba(0, 229, 163, 0.35);
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px -4px rgba(0, 255, 102, 0.12);
+  box-shadow: 0 10px 28px -4px rgba(0, 229, 163, 0.12);
 }
 
 .cyber-metric-card:hover::before {
@@ -418,8 +420,8 @@ body {
 .cyber-textarea:focus {
   outline: none;
   border-color: var(--accent-green);
-  box-shadow: 0 0 20px rgba(0, 255, 102, 0.18);
-  background: #05080c;
+  box-shadow: 0 0 20px rgba(0, 229, 163, 0.2);
+  background: #0b101c;
 }
 
 .cyber-input {
@@ -437,8 +439,8 @@ body {
 .cyber-input:focus {
   outline: none;
   border-color: var(--accent-green);
-  box-shadow: 0 0 16px rgba(0, 255, 102, 0.16);
-  background: #05080c;
+  box-shadow: 0 0 16px rgba(0, 229, 163, 0.18);
+  background: #0b101c;
 }
 
 .cyber-select {
@@ -457,8 +459,8 @@ body {
 .cyber-select:focus {
   outline: none;
   border-color: var(--accent-green);
-  box-shadow: 0 0 16px rgba(0, 255, 102, 0.16);
-  background: #05080c;
+  box-shadow: 0 0 16px rgba(0, 229, 163, 0.18);
+  background: #0b101c;
 }
 
 /* ─── Grid Overlay Texture ─────────────────────────────────────────────── */
@@ -513,9 +515,9 @@ body {
 }
 
 .cyber-chip.active {
-  background: rgba(0, 255, 102, 0.14);
+  background: rgba(0, 229, 163, 0.14);
   border-color: var(--accent-green);
   color: var(--accent-green);
   font-weight: 700;
-  box-shadow: 0 0 16px rgba(0, 255, 102, 0.3);
+  box-shadow: 0 0 16px rgba(0, 229, 163, 0.3);
 }

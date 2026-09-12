@@ -138,7 +138,7 @@ export default function GuardianDashboard() {
                       {alert.payload.amount && (
                         <div>
                           <span className="text-[var(--text-muted)] block text-[10px] uppercase">Amount:</span>
-                          <span className="text-[#00FF66] font-bold">{alert.payload.amount}</span>
+                          <span className="text-[#00e5a3] font-bold">{alert.payload.amount}</span>
                         </div>
                       )}
                       {alert.payload.transaction_id && (

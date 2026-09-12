@@ -265,7 +265,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
           {onBackToScanner ? (
             <button
               onClick={onBackToScanner}
-              className="text-xs sm:text-sm font-bold text-[#00FF66] hover:underline flex items-center gap-2 cursor-pointer uppercase tracking-wider transition-colors"
+              className="text-xs sm:text-sm font-bold text-[#00e5a3] hover:underline flex items-center gap-2 cursor-pointer uppercase tracking-wider transition-colors"
             >
               ← BACK TO THREAT SCANNER
             </button>
@@ -317,15 +317,15 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
           </a>
         </div>
 
-        <div className="p-5 sm:p-6 rounded-lg bg-[#05070a] border border-red-500/35 text-xs sm:text-sm text-red-200 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono shadow-inner">
+        <div className="p-5 sm:p-6 rounded-lg bg-[#0e1320] border border-red-500/35 text-xs sm:text-sm text-red-200 flex flex-col md:flex-row md:flex-row md:items-center justify-between gap-4 font-mono shadow-inner">
           <div>
             <span className="font-bold text-white uppercase">INDIA CYBERCRIME HOTLINE: </span>
-            <span className="text-[#00FF66] font-extrabold text-base sm:text-lg">DIAL 1930</span> or visit{' '}
+            <span className="text-[#00e5a3] font-extrabold text-base sm:text-lg">DIAL 1930</span> or visit{' '}
             <a
               href="https://cybercrime.gov.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline font-bold text-white hover:text-[#00FF66] transition-colors"
+              className="underline font-bold text-white hover:text-[#00e5a3] transition-colors"
             >
               cybercrime.gov.in
             </a>
@@ -339,7 +339,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
       {/* 3. Section 12: 8 Prioritized Actions (Spacious 2-Column Grid) */}
       <div className="cyber-card p-8 sm:p-10 lg:p-12 space-y-8">
         <div>
-          <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#00FF66]">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#00e5a3]">
             SEQUENTIAL PROTOCOL
           </div>
           <h2 className="text-2xl sm:text-3xl font-black uppercase text-white mt-1.5 tracking-tight">
@@ -383,7 +383,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
 
           {/* Step 3 */}
           <div className="cyber-card-inner p-6 sm:p-7 flex items-start gap-5 h-full min-h-[125px]">
-            <span className="flex-shrink-0 w-8 h-8 rounded-md bg-[#00FF66]/20 text-[#00FF66] font-mono font-bold text-xs sm:text-sm flex items-center justify-center border border-[#00FF66]/40 mt-0.5">
+            <span className="flex-shrink-0 w-8 h-8 rounded-md bg-[#00e5a3]/20 text-[#00e5a3] font-mono font-bold text-xs sm:text-sm flex items-center justify-center border border-[#00e5a3]/40 mt-0.5">
               3
             </span>
             <div className="flex-1 flex flex-col justify-start">
@@ -398,7 +398,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
 
           {/* Step 4 */}
           <div className="cyber-card-inner p-6 sm:p-7 flex items-start gap-5 h-full min-h-[125px]">
-            <span className="flex-shrink-0 w-8 h-8 rounded-md bg-[#00FF66]/20 text-[#00FF66] font-mono font-bold text-xs sm:text-sm flex items-center justify-center border border-[#00FF66]/40 mt-0.5">
+            <span className="flex-shrink-0 w-8 h-8 rounded-md bg-[#00e5a3]/20 text-[#00e5a3] font-mono font-bold text-xs sm:text-sm flex items-center justify-center border border-[#00e5a3]/40 mt-0.5">
               4
             </span>
             <div className="flex-1 flex flex-col justify-start">
@@ -458,7 +458,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
 
           {/* Step 8 */}
           <div className="cyber-card-inner p-6 sm:p-7 flex items-start gap-5 h-full min-h-[125px]">
-            <span className="flex-shrink-0 w-8 h-8 rounded-md bg-[#00FF66]/20 text-[#00FF66] font-mono font-bold text-xs sm:text-sm flex items-center justify-center border border-[#00FF66]/40 mt-0.5">
+            <span className="flex-shrink-0 w-8 h-8 rounded-md bg-[#00e5a3]/20 text-[#00e5a3] font-mono font-bold text-xs sm:text-sm flex items-center justify-center border border-[#00e5a3]/40 mt-0.5">
               8
             </span>
             <div className="flex-1 flex flex-col justify-start">
@@ -474,7 +474,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
       </div>
 
       {/* 3.5. Family Safety — Alert My Guardian */}
-      <div id="family-safety" className="cyber-card p-8 sm:p-10 lg:p-12 space-y-8 border-2 border-amber-500/30 bg-gradient-to-b from-[#0b0e17] to-[#04060a] relative overflow-hidden shadow-2xl scroll-mt-24">
+      <div id="family-safety" className="cyber-card p-8 sm:p-10 lg:p-12 space-y-8 border-2 border-amber-500/30 bg-gradient-to-b from-[#141a29] to-[#0a0e17] relative overflow-hidden shadow-2xl scroll-mt-24">
         {/* Ambient Top Glow */}
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-amber-500/5 blur-[100px] pointer-events-none" />
 
@@ -510,11 +510,11 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
 
         {/* STATE 3: Alert Already Sent */}
         {alertStatus === 'sent' && alertResponse && (
-          <div className="p-6 sm:p-8 rounded-xl border border-[#00FF66]/50 bg-[#02140a] space-y-5 animate-slide-up shadow-[0_0_30px_rgba(0,255,102,0.15)]">
+          <div className="p-6 sm:p-8 rounded-xl border border-[#00e5a3]/50 bg-[#071915] space-y-5 animate-slide-up shadow-[0_0_30px_rgba(0,229,163,0.15)]">
             <div className="flex items-start gap-4">
               <span className="text-3xl sm:text-4xl">🚨</span>
               <div className="space-y-1.5 flex-1">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#00FF66]/20 border border-[#00FF66]/40 text-[#00FF66] text-xs font-mono font-bold uppercase">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#00e5a3]/20 border border-[#00e5a3]/40 text-[#00e5a3] text-xs font-mono font-bold uppercase">
                   ✓ GUARDIAN ALERT SENT
                 </div>
                 <h3 className="text-lg sm:text-xl font-black uppercase text-white font-mono">
@@ -526,7 +526,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-[#00FF66]/20 font-mono text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-[#00e5a3]/20 font-mono text-xs">
               <div>
                 <span className="text-[var(--text-muted)] uppercase block">ALERT ID:</span>
                 <span className="text-white font-bold">{alertResponse.alert_id.slice(0, 13)}...</span>
@@ -567,7 +567,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
               {alertError || 'Unable to establish connection with the family notification server.'}
             </p>
             <div className="p-3.5 rounded bg-black/50 border border-red-500/30 text-white font-bold leading-relaxed">
-              📢 <span className="underline">IMPORTANT</span>: Continue the emergency steps below. Call <span className="text-[#00FF66]">1930</span> immediately if funds were transferred.
+              📢 <span className="underline">IMPORTANT</span>: Continue the emergency steps below. Call <span className="text-[#00e5a3]">1930</span> immediately if funds were transferred.
             </div>
             <div className="pt-2">
               <button
@@ -589,16 +589,16 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-mono text-xs text-gray-300 pt-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-[#00FF66]">✓</span> Real-time Dashboard alert
+                  <span className="text-[#00e5a3]">✓</span> Real-time Dashboard alert
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#00FF66]">✓</span> Recorded UTR &amp; amount sent
+                  <span className="text-[#00e5a3]">✓</span> Recorded UTR &amp; amount sent
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#00FF66]">✓</span> Live timeline &amp; step sync
+                  <span className="text-[#00e5a3]">✓</span> Live timeline &amp; step sync
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#00FF66]">✓</span> Zero raw chat exposure
+                  <span className="text-[#00e5a3]">✓</span> Zero raw chat exposure
                 </div>
               </div>
             </div>
@@ -720,7 +720,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
       <div className="cyber-card p-8 sm:p-10 lg:p-12 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
           <div>
-            <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#00FF66]">
+            <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#00e5a3]">
               EVIDENCE PRESERVATION
             </div>
             <h2 className="text-2xl sm:text-3xl font-black uppercase text-white mt-1.5 tracking-tight">
@@ -731,7 +731,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
             </p>
           </div>
 
-          <div className="font-mono text-sm sm:text-base font-bold text-[#00FF66] sm:text-right">
+          <div className="font-mono text-sm sm:text-base font-bold text-[#00e5a3] sm:text-right">
             {completedCount} / {totalChecklist} VERIFIED ({progressPercent}%)
           </div>
         </div>
@@ -739,7 +739,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
         {/* Progress Bar */}
         <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
           <div
-            className="h-full bg-[#00FF66] transition-all duration-300 shadow-[0_0_10px_#00FF66]"
+            className="h-full bg-[#00e5a3] transition-all duration-300 shadow-[0_0_10px_#00e5a3]"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -753,7 +753,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
                 key={item.id}
                 className={`flex items-start gap-5 p-5 sm:p-6 rounded-lg border transition-all cursor-pointer select-none ${
                   isChecked
-                    ? 'bg-[#00FF66]/[0.06] border-[#00FF66]/40 text-white'
+                    ? 'bg-[#00e5a3]/[0.06] border-[#00e5a3]/40 text-white'
                     : 'cyber-card-inner text-[var(--text-secondary)] hover:border-white/25'
                 }`}
               >
@@ -761,7 +761,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
                   type="checkbox"
                   checked={isChecked}
                   onChange={() => toggleChecklist(item.id)}
-                  className="mt-1 w-4.5 h-4.5 rounded border border-white/30 bg-black text-[#00FF66] focus:ring-0 flex-shrink-0 cursor-pointer accent-[#00FF66]"
+                  className="mt-1 w-4.5 h-4.5 rounded border border-white/30 bg-black text-[#00e5a3] focus:ring-0 flex-shrink-0 cursor-pointer accent-[#00e5a3]"
                 />
                 <div className="flex-1 min-w-0">
                   <div className={`text-sm sm:text-base font-bold leading-tight ${isChecked ? 'text-white line-through opacity-85' : 'text-white'}`}>
@@ -780,7 +780,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
       {/* 5. Section 14: Incident Details Form (Structured 3/2-Column Grid — Spacious) */}
       <div className="cyber-card p-8 sm:p-10 lg:p-12 space-y-8">
         <div>
-          <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#00FF66]">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#00e5a3]">
             COMPLAINT BUILDER
           </div>
           <h2 className="text-2xl sm:text-3xl font-black uppercase text-white mt-1.5 tracking-tight">
@@ -931,10 +931,10 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
 
       {/* 6. Section 15: Incident Summary Output (Spacious & Clean) */}
       {generatedSummary && (
-        <div className="cyber-card p-8 sm:p-10 lg:p-12 space-y-6 border border-[#00FF66]/30 animate-slide-up shadow-2xl">
+        <div className="cyber-card p-8 sm:p-10 lg:p-12 space-y-6 border border-[#00e5a3]/30 animate-slide-up shadow-2xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#00FF66]">
+              <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#00e5a3]">
                 EVIDENCE DOSSIER READY
               </div>
               <h2 className="text-2xl font-black uppercase text-white mt-1 tracking-tight">

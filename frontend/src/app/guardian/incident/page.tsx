@@ -84,7 +84,7 @@ export default function GuardianIncidentPage() {
             </div>
             <div className="p-3 rounded-lg bg-white/5">
               <span className="text-[var(--text-muted)] block uppercase">Amount Lost:</span>
-              <span className="text-[#00FF66] font-bold">{incident.facts.amount || 'Not provided'}</span>
+              <span className="text-[#00e5a3] font-bold">{incident.facts.amount || 'Not provided'}</span>
             </div>
             <div className="p-3 rounded-lg bg-white/5">
               <span className="text-[var(--text-muted)] block uppercase">Payment Method:</span>

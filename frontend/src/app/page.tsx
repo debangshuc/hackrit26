@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { DEMO_SCENARIOS, type DemoScenario } from '@/lib/demo-scenarios';
 import type { ScamAnalysis } from '@/lib/scam-types';
@@ -21,6 +21,15 @@ export default function HomePage() {
   const scannerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('emergency') === 'true' || window.location.hash === '#emergency') {
+        setIsEmergencyMode(true);
+      }
+    }
+  }, []);
 
   const handleSelectScenario = (scenario: DemoScenario) => {
     setInputMode('text');
@@ -220,8 +229,8 @@ export default function HomePage() {
       case 'LIKELY_LEGIT':
       default:
         return {
-          badgeBg: 'bg-[#00FF66]/15 text-[#00FF66] border-[#00FF66]/40',
-          cardBorder: 'border-[#00FF66]/30 shadow-emerald-950/30',
+          badgeBg: 'bg-[#00e5a3]/15 text-[#00e5a3] border-[#00e5a3]/40',
+          cardBorder: 'border-[#00e5a3]/30 shadow-teal-950/30',
           icon: '🛡️',
           label: 'LIKELY LEGITIMATE',
         };
@@ -238,19 +247,19 @@ export default function HomePage() {
         return 'text-yellow-400 bg-yellow-950/60 border-yellow-500/30';
       case 'LOW':
       default:
-        return 'text-[#00FF66] bg-[#00FF66]/10 border-[#00FF66]/30';
+        return 'text-[#00e5a3] bg-[#00e5a3]/10 border-[#00e5a3]/30';
     }
   };
 
   const currentVerdict = analysis ? getVerdictTheme(analysis.verdict) : null;
 
   return (
-    <main className="min-h-screen bg-[#030407] text-white flex flex-col cyber-grid-bg relative overflow-hidden">
+    <main className="min-h-screen bg-[#0a0e17] text-white flex flex-col cyber-grid-bg relative overflow-hidden">
       {/* ─── Ambient Glow Backdrop (Cybersecurity Atmosphere) ─────────────── */}
       <div className={isEmergencyMode ? 'cyber-ambient-danger' : 'cyber-ambient-glow'} />
 
       {/* ─── Global Shared Header ────────────────────────────────────────── */}
-      <header className="w-full border-b border-white/10 bg-[#030407]/90 backdrop-blur-md sticky top-0 z-50">
+      <header className="w-full border-b border-white/10 bg-[#0a0e17]/90 backdrop-blur-md sticky top-0 z-50">
         <div className="cyber-container flex items-center justify-between h-18 sm:h-22">
           {/* Logo & Sub-tag */}
           <div className="flex items-center gap-3.5">
@@ -258,7 +267,7 @@ export default function HomePage() {
               onClick={() => setIsEmergencyMode(false)}
               className="text-lg sm:text-xl font-black tracking-widest text-white uppercase flex items-center gap-2.5 font-mono cursor-pointer"
             >
-              <span className="text-[#00FF66] text-xl">🛡️</span> SCAM<span className="text-[#00FF66]">SHIELD</span>
+              <span className="text-[#00e5a3] text-xl">🛡️</span> SCAM<span className="text-[#00e5a3]">SHIELD</span>
             </button>
             <span className="text-[10px] uppercase font-mono tracking-wider px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[var(--text-secondary)] hidden sm:inline-block">
               AI SEC_OPS v1.0
@@ -290,7 +299,7 @@ export default function HomePage() {
               href="https://cybercrime.gov.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#00FF66] transition-colors"
+              className="hover:text-[#00e5a3] transition-colors"
             >
               HELPLINE 1930
             </a>
@@ -369,20 +378,20 @@ export default function HomePage() {
 
               {/* Right Column: Biometric Radar Hologram in Expansive Cyber Console */}
               <div className="flex flex-col items-center justify-center">
-                <div className="w-full max-w-[380px] aspect-square rounded-2xl bg-gradient-to-b from-[#0a0f18]/95 to-[#040609] border border-white/15 p-8 flex flex-col items-center justify-between overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)] relative group hover:border-[#00FF66]/30 transition-all duration-300">
+                <div className="w-full max-w-[380px] aspect-square rounded-2xl bg-gradient-to-b from-[#141a29] to-[#0a0e17] border border-white/15 p-8 flex flex-col items-center justify-between overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)] relative group hover:border-[#00e5a3]/30 transition-all duration-300">
                   {/* Concentric circles background */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div className="w-[320px] h-[320px] rounded-full border border-white/[0.04] animate-pulse" />
                     <div className="absolute w-[240px] h-[240px] rounded-full border border-white/[0.06]" />
-                    <div className="absolute w-[160px] h-[160px] rounded-full border border-[#00FF66]/15" />
-                    <div className="absolute w-[90px] h-[90px] rounded-full border border-[#00FF66]/25" />
+                    <div className="absolute w-[160px] h-[160px] rounded-full border border-[#00e5a3]/15" />
+                    <div className="absolute w-[90px] h-[90px] rounded-full border border-[#00e5a3]/25" />
                   </div>
 
                   {/* Top telemetry tag */}
                   <div className="w-full flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)] z-10">
                     <span>SENSOR: ID_BIO_01</span>
-                    <span className="text-[#00FF66] font-bold flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00FF66] animate-ping" />
+                    <span className="text-[#00e5a3] font-bold flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00e5a3] animate-ping" />
                       LIVE RADAR
                     </span>
                   </div>
@@ -396,19 +405,19 @@ export default function HomePage() {
                       strokeWidth="2"
                       strokeLinecap="round"
                     >
-                      <path d="M100 35 C65 35 50 65 50 95 C50 135 70 165 100 165 C130 165 150 135 150 95 C150 65 135 35 100 35" stroke="#00FF66" strokeWidth="2.5" opacity="0.9" />
+                      <path d="M100 35 C65 35 50 65 50 95 C50 135 70 165 100 165 C130 165 150 135 150 95 C150 65 135 35 100 35" stroke="#00e5a3" strokeWidth="2.5" opacity="0.9" />
                       <path d="M100 50 C75 50 62 75 62 95 C62 125 78 150 100 150 C122 150 138 125 138 95 C138 75 125 50 100 50" stroke="white" strokeWidth="2" opacity="0.8" />
-                      <path d="M100 65 C85 65 75 83 75 95 C75 115 88 135 100 135 C112 135 125 115 125 95 C125 83 115 65 100 65" stroke="#00FF66" strokeWidth="2" opacity="0.75" />
+                      <path d="M100 65 C85 65 75 83 75 95 C75 115 88 135 100 135 C112 135 125 115 125 95 C125 83 115 65 100 65" stroke="#00e5a3" strokeWidth="2" opacity="0.75" />
                       <path d="M100 80 C92 80 88 89 88 95 C88 105 94 120 100 120 C106 120 112 105 112 95 C112 89 108 80 100 80" stroke="white" strokeWidth="2" opacity="0.85" />
-                      <path d="M100 92 C98 92 96 95 96 97 C96 101 98 107 100 107 C102 107 104 101 104 97 C104 95 102 92 100 92" stroke="#00FF66" strokeWidth="2.5" opacity="1" />
-                      <line x1="100" y1="95" x2="155" y2="40" stroke="#00FF66" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
-                      <circle cx="155" cy="40" r="3" fill="#00FF66" />
+                      <path d="M100 92 C98 92 96 95 96 97 C96 101 98 107 100 107 C102 107 104 101 104 97 C104 95 102 92 100 92" stroke="#00e5a3" strokeWidth="2.5" opacity="1" />
+                      <line x1="100" y1="95" x2="155" y2="40" stroke="#00e5a3" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
+                      <circle cx="155" cy="40" r="3" fill="#00e5a3" />
                     </svg>
                   </div>
 
                   {/* Telemetry Footer */}
                   <div className="relative z-10 text-center w-full">
-                    <div className="text-[11px] font-mono tracking-widest text-[#00FF66] uppercase font-bold">
+                    <div className="text-[11px] font-mono tracking-widest text-[#00e5a3] uppercase font-bold">
                       ACTIVE BIOMETRIC THREAT SHIELD
                     </div>
                     <div className="text-[10px] text-[var(--text-muted)] font-mono mt-1 uppercase">
@@ -431,7 +440,7 @@ export default function HomePage() {
               </div>
 
               <div className="cyber-metric-card">
-                <div className="text-4xl sm:text-5xl font-black text-[#00FF66] tracking-tight font-mono">
+                <div className="text-4xl sm:text-5xl font-black text-[#00e5a3] tracking-tight font-mono">
                   10+
                 </div>
                 <div className="text-xs sm:text-sm text-[var(--text-secondary)] mt-3 font-medium">
@@ -449,7 +458,7 @@ export default function HomePage() {
               </div>
 
               <div className="cyber-metric-card">
-                <div className="text-4xl sm:text-5xl font-black text-[#00FF66] tracking-tight font-mono">
+                <div className="text-4xl sm:text-5xl font-black text-[#00e5a3] tracking-tight font-mono">
                   24/7
                 </div>
                 <div className="text-xs sm:text-sm text-[var(--text-secondary)] mt-3 font-medium">
@@ -463,8 +472,8 @@ export default function HomePage() {
               {/* Header Bar */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-white/10">
                 <div>
-                  <div className="text-xs font-mono text-[#00FF66] font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#00FF66] inline-block shadow-[0_0_8px_#00FF66]" />
+                  <div className="text-xs font-mono text-[#00e5a3] font-bold uppercase tracking-wider flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#00e5a3] inline-block shadow-[0_0_8px_#00e5a3]" />
                     LIVE SCAM ANALYSIS ENGINE
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-black uppercase text-white mt-1.5 tracking-tight">
@@ -478,7 +487,7 @@ export default function HomePage() {
               </div>
 
               {/* Mode Selector Tabs: [ PASTE MESSAGE ] [ UPLOAD SCREENSHOT ] */}
-              <div className="flex flex-wrap items-center gap-3 p-1.5 rounded-lg bg-[#05070a] border border-white/10 w-fit">
+              <div className="flex flex-wrap items-center gap-3 p-1.5 rounded-lg bg-[#0e1320] border border-white/10 w-fit">
                 <button
                   type="button"
                   onClick={() => {
@@ -487,7 +496,7 @@ export default function HomePage() {
                   }}
                   className={`px-5 py-2.5 rounded-md text-xs font-mono font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer ${
                     inputMode === 'text'
-                      ? 'bg-[#00FF66]/15 text-[#00FF66] border border-[#00FF66]/40 shadow-[0_0_12px_rgba(0,255,102,0.25)]'
+                      ? 'bg-[#00e5a3]/15 text-[#00e5a3] border border-[#00e5a3]/40 shadow-[0_0_12px_rgba(0,229,163,0.25)]'
                       : 'text-[var(--text-secondary)] hover:text-white border border-transparent'
                   }`}
                 >
@@ -501,7 +510,7 @@ export default function HomePage() {
                   }}
                   className={`px-5 py-2.5 rounded-md text-xs font-mono font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer ${
                     inputMode === 'screenshot'
-                      ? 'bg-[#00FF66]/15 text-[#00FF66] border border-[#00FF66]/40 shadow-[0_0_12px_rgba(0,255,102,0.25)]'
+                      ? 'bg-[#00e5a3]/15 text-[#00e5a3] border border-[#00e5a3]/40 shadow-[0_0_12px_rgba(0,229,163,0.25)]'
                       : 'text-[var(--text-secondary)] hover:text-white border border-transparent'
                   }`}
                 >
@@ -521,7 +530,7 @@ export default function HomePage() {
                       {activeScenarioId && (
                         <button
                           onClick={handleClear}
-                          className="text-xs font-mono text-[#00FF66] hover:underline cursor-pointer"
+                          className="text-xs font-mono text-[#00e5a3] hover:underline cursor-pointer"
                         >
                           [CLEAR SELECTION]
                         </button>
@@ -600,10 +609,10 @@ export default function HomePage() {
                       onDragLeave={handleDragLeave}
                       onDrop={handleDrop}
                       onClick={() => fileInputRef.current?.click()}
-                      className={`border-2 border-dashed rounded-xl p-10 sm:p-14 text-center cursor-pointer transition-all duration-200 flex flex-col items-center justify-center gap-4 bg-[#05070a] ${
+                      className={`border-2 border-dashed rounded-xl p-10 sm:p-14 text-center cursor-pointer transition-all duration-200 flex flex-col items-center justify-center gap-4 bg-[#0e1320] ${
                         isDragging
-                          ? 'border-[#00FF66] bg-[#00FF66]/[0.05] shadow-[0_0_28px_rgba(0,255,102,0.2)] scale-[1.005]'
-                          : 'border-white/15 hover:border-[#00FF66]/50 hover:bg-[#070b12]'
+                          ? 'border-[#00e5a3] bg-[#00e5a3]/[0.05] shadow-[0_0_28px_rgba(0,229,163,0.2)] scale-[1.005]'
+                          : 'border-white/15 hover:border-[#00e5a3]/50 hover:bg-[#121827]'
                       }`}
                     >
                       <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-3xl shadow-[0_0_15px_rgba(0,0,0,0.5)]">
@@ -615,7 +624,7 @@ export default function HomePage() {
                           DROP SCREENSHOT HERE
                         </div>
                         <div className="text-xs sm:text-sm text-[var(--text-secondary)] font-sans">
-                          or <span className="text-[#00FF66] underline">click to choose an image</span> from your device
+                          or <span className="text-[#00e5a3] underline">click to choose an image</span> from your device
                         </div>
                       </div>
 
@@ -640,11 +649,11 @@ export default function HomePage() {
                     </div>
                   ) : (
                     /* Image Preview & Details Card */
-                    <div className="cyber-card-inner p-6 space-y-5 border border-[#00FF66]/30 bg-[#05080d]">
+                    <div className="cyber-card-inner p-6 space-y-5 border border-[#00e5a3]/30 bg-[#0e1320]">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
                         <div className="flex items-center gap-3">
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#00FF66] animate-pulse" />
-                          <div className="font-mono text-xs uppercase font-bold text-[#00FF66] tracking-wider">
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#00e5a3] animate-pulse" />
+                          <div className="font-mono text-xs uppercase font-bold text-[#00e5a3] tracking-wider">
                             SCREENSHOT READY FOR AI SCAN
                           </div>
                         </div>
@@ -776,7 +785,7 @@ export default function HomePage() {
                         <div className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white font-mono">
                           {analysis.risk_level} RISK — {analysis.verdict.replace('_', ' ')}
                         </div>
-                        <div className="text-sm sm:text-base font-bold text-[#00FF66] font-mono mt-0.5">
+                        <div className="text-sm sm:text-base font-bold text-[#00e5a3] font-mono mt-0.5">
                           Category: {analysis.category}
                         </div>
                       </div>
@@ -854,9 +863,9 @@ export default function HomePage() {
                     {analysis.recommended_actions.map((act, idx) => (
                       <div
                         key={idx}
-                        className="p-4 sm:p-5 rounded-lg border border-[#00FF66]/20 bg-[#00FF66]/[0.03] text-xs sm:text-sm text-gray-200 flex items-start gap-3.5"
+                        className="p-4 sm:p-5 rounded-lg border border-[#00e5a3]/20 bg-[#00e5a3]/[0.03] text-xs sm:text-sm text-gray-200 flex items-start gap-3.5"
                       >
-                        <span className="font-mono font-bold text-[#00FF66] mt-0.5">{idx + 1}.</span>
+                        <span className="font-mono font-bold text-[#00e5a3] mt-0.5">{idx + 1}.</span>
                         <span className="leading-relaxed">{act}</span>
                       </div>
                     ))}
@@ -916,18 +925,18 @@ export default function HomePage() {
       </div>
 
       {/* ─── Global Shared Footer (Spacious & Clean) ──────────────────────── */}
-      <footer className="w-full border-t border-white/10 py-14 sm:py-18 font-mono text-center mt-auto relative z-10 bg-[#020306]">
+      <footer className="w-full border-t border-white/10 py-14 sm:py-18 font-mono text-center mt-auto relative z-10 bg-[#070a10]">
         <div className="cyber-container space-y-4">
-          <div className="inline-flex items-center gap-3.5 px-5 py-2.5 rounded-lg border border-white/10 bg-[#080a0f] text-xs text-gray-400">
+          <div className="inline-flex items-center gap-3.5 px-5 py-2.5 rounded-lg border border-white/10 bg-[#0e1320] text-xs text-gray-400">
             <span>📞</span>
             <span>NATIONAL CYBERCRIME HELPLINE:</span>
-            <strong className="text-[#00FF66] text-sm">1930</strong>
+            <strong className="text-[#00e5a3] text-sm">1930</strong>
             <span className="text-gray-600">|</span>
             <a
               href="https://cybercrime.gov.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-[#00FF66] underline transition-colors font-medium"
+              className="text-white hover:text-[#00e5a3] underline transition-colors font-medium"
             >
               cybercrime.gov.in
             </a>
