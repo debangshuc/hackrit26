@@ -261,18 +261,27 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
     <div className="w-full space-y-12 sm:space-y-16 animate-fade-in font-sans py-2 sm:py-4">
       {/* 1. Emergency Sub-Header & Navigation */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10 font-mono">
-        {onBackToScanner ? (
-          <button
-            onClick={onBackToScanner}
-            className="text-xs sm:text-sm font-bold text-[#00FF66] hover:underline flex items-center gap-2 cursor-pointer uppercase tracking-wider transition-colors"
+        <div className="flex flex-wrap items-center gap-4">
+          {onBackToScanner ? (
+            <button
+              onClick={onBackToScanner}
+              className="text-xs sm:text-sm font-bold text-[#00FF66] hover:underline flex items-center gap-2 cursor-pointer uppercase tracking-wider transition-colors"
+            >
+              ← BACK TO THREAT SCANNER
+            </button>
+          ) : (
+            <div className="text-xs text-[var(--text-muted)] uppercase">
+              AI SCAM SHIELD EMERGENCY CONSOLE
+            </div>
+          )}
+
+          <a
+            href="#family-safety"
+            className="px-3 py-1 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 hover:bg-amber-500/25 text-xs font-mono font-bold uppercase transition-all flex items-center gap-1.5"
           >
-            ← BACK TO THREAT SCANNER
-          </button>
-        ) : (
-          <div className="text-xs text-[var(--text-muted)] uppercase">
-            AI SCAM SHIELD EMERGENCY CONSOLE
-          </div>
-        )}
+            <span>👨‍👩‍👧</span> ALERT GUARDIAN ↓
+          </a>
+        </div>
 
         <div className="flex items-center gap-3">
           <span className="text-[11px] uppercase tracking-wider text-[var(--text-muted)] hidden sm:inline-block">
@@ -287,16 +296,25 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
 
       {/* 2. Emergency Warning Banner (Section 12 — Spacious) */}
       <div className="cyber-card-danger p-8 sm:p-10 lg:p-12 space-y-6">
-        <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-red-500/20 text-red-300 text-xs font-mono font-bold uppercase">
-            ⚡ IMMEDIATE VICTIM GUIDANCE
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-red-500/20 text-red-300 text-xs font-mono font-bold uppercase">
+              ⚡ IMMEDIATE VICTIM GUIDANCE
+            </div>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight leading-tight">
+              I&apos;ve already sent money. What should I do?
+            </h1>
+            <p className="text-red-200/90 text-sm sm:text-base font-medium leading-relaxed max-w-2xl">
+              Act quickly. Don&apos;t send the scammer anything else.
+            </p>
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight leading-tight">
-            I&apos;ve already sent money. What should I do?
-          </h1>
-          <p className="text-red-200/90 text-sm sm:text-base font-medium leading-relaxed max-w-2xl">
-            Act quickly. Don&apos;t send the scammer anything else.
-          </p>
+
+          <a
+            href="#family-safety"
+            className="btn-cyber-danger text-xs sm:text-sm py-3 px-6 whitespace-nowrap self-start sm:self-auto font-mono font-bold uppercase shadow-[0_0_15px_rgba(239,68,68,0.4)]"
+          >
+            <span>👨‍👩‍👧</span> JUMP TO GUARDIAN ALERT ↓
+          </a>
         </div>
 
         <div className="p-5 sm:p-6 rounded-lg bg-[#05070a] border border-red-500/35 text-xs sm:text-sm text-red-200 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono shadow-inner">
@@ -456,7 +474,7 @@ DISCLAIMER: This incident summary is organized from victim-provided facts to ass
       </div>
 
       {/* 3.5. Family Safety — Alert My Guardian */}
-      <div className="cyber-card p-8 sm:p-10 lg:p-12 space-y-8 border-2 border-amber-500/30 bg-gradient-to-b from-[#0b0e17] to-[#04060a] relative overflow-hidden shadow-2xl">
+      <div id="family-safety" className="cyber-card p-8 sm:p-10 lg:p-12 space-y-8 border-2 border-amber-500/30 bg-gradient-to-b from-[#0b0e17] to-[#04060a] relative overflow-hidden shadow-2xl scroll-mt-24">
         {/* Ambient Top Glow */}
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-amber-500/5 blur-[100px] pointer-events-none" />
 
